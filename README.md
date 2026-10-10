@@ -77,11 +77,13 @@ using media time rather than a timer. No player controls are displayed.
 of the viewport and pauses it outside that area or when the document is hidden.
 Failed loading or initially blocked autoplay retains the figure. Without JavaScript,
 the original MP4 plays directly with its native figure introduction.
-The earlier 480px WebP/cover pair remains in `public/videos/pace` for switching.
-The rejected 1280px animated WebP remains unchanged in the local material library
-and `.git/local-backups/private-files-by-cgpt/pace-hd-webp-20261010-by-cgpt/`,
-so it is excluded from publication. Generation scripts, original sources and
-pixel proofs stay in the local PACE material folder. No previous file is overwritten.
+<!-- by cgpt: Publish only selected PACE media; archive every earlier candidate locally. -->
+The earlier 480px WebP/cover pair and rejected 1280px animated WebP remain
+unchanged in the external local PACE material library. Their former website
+copies are archived under `outputs/retained-site-copies-20261010-by-cgpt/`
+in that library, outside the Git repository and deployment output.
+Generation scripts, original sources and pixel proofs stay in the local PACE
+material folder. No previous file is overwritten.
 <!-- by cgpt: All Video entries now open author-provided YouTube destinations. -->
 TIM and AEI Video links open the author-provided YouTube videos. JCEM and NAMRC
 each have a single Video link that opens their respective YouTube playlist
@@ -163,13 +165,15 @@ arm visible. The sidebar, Person metadata and all browser icon versions share
 
 <!-- by cgpt: Switch the portrait and all browser icons together. -->
 ```bash
-bash public/images/switch-avatar-by-cgpt.sh new
-bash public/images/switch-avatar-by-cgpt.sh old
+bash ../personalPAGE/midocx/media/avatar/outputs/published-by-cgpt/switch-avatar-by-cgpt.sh new
+bash ../personalPAGE/midocx/media/avatar/outputs/published-by-cgpt/switch-avatar-by-cgpt.sh old
 ```
 
-The executable script is beside both avatars in `public/images/`, as explicitly
-approved by the user. Both portraits and this switch script are exceptions to
-the used-assets-only rule. The script can run by absolute path from any directory.
+<!-- by cgpt: The two portraits are the sole unused-resource exception; keep tools local. -->
+Only the two portraits are retained exceptions to the used-assets-only rule.
+The switch script is beside their archived copies in the local material library,
+outside this repository and deployment output. The script can run by absolute
+path from any directory and updates the website's `public/images/` assets.
 Every avatar change must also
 update its corresponding browser icons using this script. It accepts a
 photograph's filename from the website's `public/images/` directory. Each switch generates
@@ -208,10 +212,11 @@ The only website maintenance repository is
 This repository tracks the Astro source, necessary build/deployment configuration,
 and resources actually used by the website. `node_modules/`, `dist/`, and `.astro/`
 are generated local build files and stay ignored.
-<!-- by cgpt: Honor the user's explicit old/new PACE coexistence requirement. -->
-The previous PACE animation and cover are retained alternatives, alongside the
-two switchable avatars and their maintenance script. Do not remove these files
-as unused-resource cleanup; other intermediate media stay in the local library.
+<!-- by cgpt: Keep historical media and maintenance tools outside Git. -->
+Only selected publication media are published. Previous PACE variants and all
+other intermediate media and asset-generation tools stay in the local material
+library for comparison and maintenance. Only the two switchable avatars are
+retained exceptions to the used-assets-only rule.
 
 The separate `/home/chenzhiyuan/Documents/personalPAGE` workspace stores source
 materials and intermediate exports. Each publication's final reviewed image,

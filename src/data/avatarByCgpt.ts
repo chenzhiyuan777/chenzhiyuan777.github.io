@@ -1,4 +1,4 @@
-// by cgpt: Updated by public/images/switch-avatar-by-cgpt.sh.
+// by cgpt: Updated by personalPAGE/midocx/media/avatar/outputs/published-by-cgpt/switch-avatar-by-cgpt.sh.
 export const avatarByCgpt = {
   "src": "/images/profile-lab-portrait-by-cgpt.webp",
   "width": 960,
