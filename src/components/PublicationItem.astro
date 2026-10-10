@@ -24,7 +24,56 @@ const mediaLabelPosition = publication.mediaLabelPosition;
     mediaLabelPosition === "above" && "publication-media-label-space",
   ]}>
     {
-      publication.image ? (
+      publication.video ? (
+        <Fragment>
+          {/* by cgpt: A source video has the same card frame and no playback controls. */}
+          <video
+            data-publication-video-by-cgpt
+            data-video-src={publication.video}
+            data-figure-seconds={publication.videoFigureSeconds ?? 0}
+            poster={publication.image}
+            width={publication.mediaAspect === "wide" ? 1280 : 720}
+            height={publication.mediaAspect === "wide" ? 720 : 450}
+            preload="none"
+            autoplay
+            muted
+            loop
+            playsinline
+            aria-label={publication.imageAlt ?? publication.title}
+          />
+          {publication.image && (
+            <img
+              class="publication-video-cover-by-cgpt"
+              data-video-cover-by-cgpt
+              src={publication.image}
+              alt=""
+              aria-hidden="true"
+              width={publication.mediaAspect === "wide" ? 1280 : 720}
+              height={publication.mediaAspect === "wide" ? 720 : 450}
+              loading="lazy"
+            />
+          )}
+          <noscript>
+            {/* by cgpt: Without JS, play the original MP4 without a persistent overlay. */}
+            <style is:inline>
+              .publication-media > video[data-publication-video-by-cgpt],
+              .publication-media > img[data-video-cover-by-cgpt] { display: none; }
+            </style>
+            <video
+              src={publication.video}
+              poster={publication.image}
+              width={publication.mediaAspect === "wide" ? 1280 : 720}
+              height={publication.mediaAspect === "wide" ? 720 : 450}
+              preload="metadata"
+              autoplay
+              muted
+              loop
+              playsinline
+              aria-label={publication.imageAlt ?? publication.title}
+            />
+          </noscript>
+        </Fragment>
+      ) : publication.image ? (
         <img
           src={publication.imagePoster ?? publication.image}
           data-motion-src={publication.imagePoster ? publication.image : undefined}
@@ -41,7 +90,7 @@ const mediaLabelPosition = publication.mediaLabelPosition;
       )
     }
     {
-      publication.imagePoster && (
+      !publication.video && publication.imagePoster && (
         <noscript>
           <style is:inline>.publication-media > img[data-motion-src] { display: none; }</style>
           <img
@@ -55,7 +104,7 @@ const mediaLabelPosition = publication.mediaLabelPosition;
       )
     }
     {
-      publication.image && publication.mediaLabel !== false && (
+      (publication.image || publication.video) && publication.mediaLabel !== false && (
         <span class:list={[
           "publication-media-label",
           (mediaLabelPosition === "top-edge" || mediaLabelPosition === "above") && "publication-media-label-top-edge",
@@ -115,4 +164,6 @@ const mediaLabelPosition = publication.mediaLabelPosition;
 <script>
   // by cgpt: Share one observer across cards; retain full-resolution first-frame covers.
   import "../scripts/publication-motion-by-cgpt";
+  // by cgpt: Videos have their own playback lifecycle; existing WebP behavior stays shared.
+  import "../scripts/publication-video-by-cgpt";
 </script>

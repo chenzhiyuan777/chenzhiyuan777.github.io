@@ -52,16 +52,36 @@ label strip.
 <!-- by cgpt: Keep recent under-review work adjacent to the latest public projects. -->
 The featured publication order is PACE, ForeTac, Finder, UCAG-P, ALTER, TIM,
 AEI, JCEM, NAMRC, and CIN.
-<!-- by cgpt: Distinguish the eight GIFs from the two approved static figures. -->
-Eight homepage previews use lossless animated WebP files; Finder and CIN use static PNG figures.
-<!-- by cgpt: Preserve every decoded GIF pixel and its complete display timeline. -->
-The WebP previews retain every displayed pixel, the dimensions, playback speed,
+<!-- by cgpt: Select a source MP4 for PACE and retain seven approved WebP previews. -->
+PACE uses its reviewed MP4; seven other previews use lossless animated WebP files.
+Finder and CIN use static PNG figures.
+<!-- by cgpt: Keep the other seven original GIF reference timelines unchanged. -->
+The seven other WebP previews retain every displayed pixel, the dimensions, playback speed,
 and complete timeline of the approved GIFs. Repeated identical frames may share
 one encoded frame with their original combined display duration. The GIF originals,
 smaller `_lite` candidates, generation scripts and full pixel proofs remain in the
 external local media workspace for comparison. TIM keeps its
 View2 and visual-feedback inset, without
 burned-in stage or speed labels; its blue page label is `IEEE TIM 2025`.
+<!-- by cgpt: Preserve original video bytes and the sharp figure without a large animated image. -->
+PACE selects `public/videos/pace/pace-overview-4x-master-hd-1280x720-by-cgpt.mp4`
+through `video` in `profile.ts`, with the original-Figure-1 HD cover in `image`
+and `videoFigureSeconds: 4`. The MP4 is a byte-identical copy of the reviewed
+1280×720 montage: 30 fps, 635 frames, 21.167 seconds, 2.41 MB, already fast-start.
+It adds no encoding loss; its existing H.264 compression is not pixel-lossless.
+The 0.31 MB figure comes directly from the original 4076×2508 image. Together
+they require 2.72 MB, about 91% less than the rejected 30.56 MB WebP/cover pair.
+The original figure overlays the video for the first four seconds of each loop,
+using media time rather than a timer. No player controls are displayed.
+`src/scripts/publication-video-by-cgpt.ts` starts muted playback within 100px
+of the viewport and pauses it outside that area or when the document is hidden.
+Failed loading or initially blocked autoplay retains the figure. Without JavaScript,
+the original MP4 plays directly with its native figure introduction.
+The earlier 480px WebP/cover pair remains in `public/videos/pace` for switching.
+The rejected 1280px animated WebP remains unchanged in the local material library
+and `.git/local-backups/private-files-by-cgpt/pace-hd-webp-20261010-by-cgpt/`,
+so it is excluded from publication. Generation scripts, original sources and
+pixel proofs stay in the local PACE material folder. No previous file is overwritten.
 <!-- by cgpt: All Video entries now open author-provided YouTube destinations. -->
 TIM and AEI Video links open the author-provided YouTube videos. JCEM and NAMRC
 each have a single Video link that opens their respective YouTube playlist
@@ -69,7 +89,7 @@ directly. NAMRC's earlier two-video chooser is no longer part of the page.
 Paper links use the verified publisher DOIs. Resource links
 appear directly below the authors, following the live reference homepage.
 <!-- by cgpt: Covers prevent large below-screen animations from loading during refresh. -->
-Each animated entry sets `imagePoster` to a lossless full-resolution first-frame
+Each WebP entry sets `imagePoster` to a lossless full-resolution first-frame
 cover. `src/scripts/publication-motion-by-cgpt.ts` loads the animation when it is
 within 100px of the viewport, then replaces the cover after loading succeeds.
 The cover stays visible on failure. Without JavaScript, the animation is rendered
@@ -188,6 +208,10 @@ The only website maintenance repository is
 This repository tracks the Astro source, necessary build/deployment configuration,
 and resources actually used by the website. `node_modules/`, `dist/`, and `.astro/`
 are generated local build files and stay ignored.
+<!-- by cgpt: Honor the user's explicit old/new PACE coexistence requirement. -->
+The previous PACE animation and cover are retained alternatives, alongside the
+two switchable avatars and their maintenance script. Do not remove these files
+as unused-resource cleanup; other intermediate media stay in the local library.
 
 The separate `/home/chenzhiyuan/Documents/personalPAGE` workspace stores source
 materials and intermediate exports. Each publication's final reviewed image,

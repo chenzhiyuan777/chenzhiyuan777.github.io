@@ -470,7 +470,9 @@ h3 {
 
 /* by cgpt: Teaser styles apply only to the main image, preserving inline logos. */
 .publication-media > img,
-.publication-media > noscript > img {
+.publication-media > noscript > img,
+.publication-media > video,
+.publication-media > noscript > video {
   display: block;
   width: 100%;
   height: 100%;
@@ -480,8 +482,21 @@ h3 {
 }
 
 .publication-media-wide > img,
-.publication-media-wide > noscript > img {
+.publication-media-wide > noscript > img,
+.publication-media-wide > video,
+.publication-media-wide > noscript > video {
   object-fit: contain;
+}
+
+/* by cgpt: The sharp figure covers the source video while loading and during its introduction. */
+.publication-media > img.publication-video-cover-by-cgpt {
+  position: absolute;
+  inset: 0;
+}
+
+/* by cgpt: Override the general image display rule when the video frame is ready. */
+.publication-media > img.publication-video-cover-by-cgpt[hidden] {
+  display: none;
 }
 
 .publication-media-label {

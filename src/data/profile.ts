@@ -20,6 +20,10 @@ export type Publication = {
   image?: string;
   // by cgpt: A pixel-exact first-frame cover defers the larger lossless animation.
   imagePoster?: string;
+  // by cgpt: A reviewed source video can retain its native quality without GIF conversion.
+  video?: string;
+  // by cgpt: Keep the original figure visible during each video's introduction.
+  videoFigureSeconds?: number;
   imageAlt?: string;
   mediaAspect?: "wide";
   // by cgpt: Use false when an overlaid label would obscure a scientific figure.
@@ -84,9 +88,10 @@ export const publications: Publication[] = [
     venue: "CoRL 2026 (Oral)",
     year: "2026",
     venueBadge: "Top Conference",
-    // by cgpt: Pixel-exact lossless animation and full-resolution first-frame cover.
-    image: "/videos/pace/pace_overview_4x_refine_clear-lossless-by-cgpt.webp",
-    imagePoster: "/videos/pace/pace_overview_4x_refine_clear-poster-lossless-by-cgpt.webp",
+    // by cgpt: Play the unchanged 720p master; retain the original figure for its four-second introduction.
+    image: "/videos/pace/pace-overview-4x-figure-source-hd-1280x720-by-cgpt-poster.webp",
+    video: "/videos/pace/pace-overview-4x-master-hd-1280x720-by-cgpt.mp4",
+    videoFigureSeconds: 4,
     imageAlt: "PACE temporal roles and representative insertion tasks animation",
     mediaAspect: "wide",
     mediaLabel: "CoRL 2026 (Oral)",
