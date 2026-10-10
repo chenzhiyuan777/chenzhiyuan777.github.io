@@ -469,7 +469,8 @@ h3 {
 }
 
 /* by cgpt: Teaser styles apply only to the main image, preserving inline logos. */
-.publication-media > img {
+.publication-media > img,
+.publication-media > noscript > img {
   display: block;
   width: 100%;
   height: 100%;
@@ -478,7 +479,8 @@ h3 {
   object-fit: cover;
 }
 
-.publication-media-wide > img {
+.publication-media-wide > img,
+.publication-media-wide > noscript > img {
   object-fit: contain;
 }
 

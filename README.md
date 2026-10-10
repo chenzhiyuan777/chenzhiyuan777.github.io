@@ -53,9 +53,13 @@ label strip.
 The featured publication order is PACE, ForeTac, Finder, UCAG-P, ALTER, TIM,
 AEI, JCEM, NAMRC, and CIN.
 <!-- by cgpt: Distinguish the eight GIFs from the two approved static figures. -->
-Eight homepage previews use looping GIFs; Finder and CIN use static PNG figures.
-The five older published works use the clearer `_clear` GIFs. Smaller `_lite`
-versions and older media remain in the external local media workspace for comparison. TIM keeps its
+Eight homepage previews use lossless animated WebP files; Finder and CIN use static PNG figures.
+<!-- by cgpt: Preserve every decoded GIF pixel and its complete display timeline. -->
+The WebP previews retain every displayed pixel, the dimensions, playback speed,
+and complete timeline of the approved GIFs. Repeated identical frames may share
+one encoded frame with their original combined display duration. The GIF originals,
+smaller `_lite` candidates, generation scripts and full pixel proofs remain in the
+external local media workspace for comparison. TIM keeps its
 View2 and visual-feedback inset, without
 burned-in stage or speed labels; its blue page label is `IEEE TIM 2025`.
 <!-- by cgpt: All Video entries now open author-provided YouTube destinations. -->
@@ -64,6 +68,12 @@ each have a single Video link that opens their respective YouTube playlist
 directly. NAMRC's earlier two-video chooser is no longer part of the page.
 Paper links use the verified publisher DOIs. Resource links
 appear directly below the authors, following the live reference homepage.
+<!-- by cgpt: Covers prevent large below-screen animations from loading during refresh. -->
+Each animated entry sets `imagePoster` to a lossless full-resolution first-frame
+cover. `src/scripts/publication-motion-by-cgpt.ts` loads the animation when it is
+within 100px of the viewport, then replaces the cover after loading succeeds.
+The cover stays visible on failure. Without JavaScript, the animation is rendered
+directly. Both states keep the existing frame and upper-left blue label.
 PACE has Project and Paper entries, but Paper is explicitly marked Coming soon
 until a public URL is supplied; its project page currently uses `#` for that link.
 To activate it, replace the Paper entry's `note` with `href` in `profile.ts`.
@@ -81,23 +91,23 @@ source material is retained.
 ALTER's Project link is [the project homepage](https://alter-vla.github.io/ALTER-vla/),
 extracted from page 1 of `个人主页/alter/mobicom27-paper415.pdf` in the external
 `/home/chenzhiyuan/Documents/personalPAGE` material workspace.
-Its comparison GIF uses the project's official real-robot
+Its comparison preview uses the project's official real-robot
 [pi0.5 obstacle video](https://alter-vla.github.io/ALTER-vla/videos/pi05-board.mp4)
 and [ALTER obstacle video](https://alter-vla.github.io/ALTER-vla/videos/alter-board.mp4).
 Both views are preserved at the original speed and aligned at board insertion:
 the pi0.5 clip shows the bowl tipping, while ALTER lifts the block over the board
 and places it in the bowl. The clips begin at 3.233/3.733 s and end at
 5.733/9.433 s, respectively; their final frames are held for comparison.
-The 640×480, 10 fps GIF lasts 6.7 s. This demonstrates the response to an obstacle,
+The 640×480 source animation lasts 6.7 s. This demonstrates the response to an obstacle,
 not a wall-clock latency comparison. The earlier LIBERO GIF remains available
 locally for reference. Its Paper entry remains non-clickable because no public
 paper link has been supplied. The visible author line is `Co-author`.
 Under-review entries do not receive accepted-venue badges. ForeTac uses a
-16-second GIF made from the supplied presentation's 0–3 s segment followed by
+16-second animation made from the supplied presentation's 0–3 s segment followed by
 12–25 s; its Project URL is extracted from the manuscript and its Paper entry
 remains pending. Its author line currently shows the known first author and a
 pending co-author placeholder until the complete list is supplied.
-Publication media labels use the CoRL-style upper-left overlay; the source GIF
+Publication media labels use the CoRL-style upper-left overlay; the source image
 dimensions affect only `object-fit: contain` letterboxing inside the fixed 16:9
 frame, not the label's frame-relative position.
 <!-- by cgpt: Patent dates and bilingual title conventions. -->

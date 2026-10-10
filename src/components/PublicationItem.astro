@@ -26,7 +26,8 @@ const mediaLabelPosition = publication.mediaLabelPosition;
     {
       publication.image ? (
         <img
-          src={publication.image}
+          src={publication.imagePoster ?? publication.image}
+          data-motion-src={publication.imagePoster ? publication.image : undefined}
           alt={publication.imageAlt ?? ""}
           width={publication.mediaAspect === "wide" ? 640 : 720}
           height={publication.mediaAspect === "wide" ? 360 : 450}
@@ -37,6 +38,20 @@ const mediaLabelPosition = publication.mediaLabelPosition;
           <span>{publication.year}</span>
           <small>Figure pending</small>
         </div>
+      )
+    }
+    {
+      publication.imagePoster && (
+        <noscript>
+          <style is:inline>.publication-media > img[data-motion-src] { display: none; }</style>
+          <img
+            src={publication.image}
+            alt={publication.imageAlt ?? ""}
+            width={publication.mediaAspect === "wide" ? 640 : 720}
+            height={publication.mediaAspect === "wide" ? 360 : 450}
+            loading="lazy"
+          />
+        </noscript>
       )
     }
     {
@@ -96,3 +111,8 @@ const mediaLabelPosition = publication.mediaLabelPosition;
     {publication.summary && <p class="publication-summary"><InlineTextByCgpt text={publication.summary} /></p>}
   </div>
 </article>
+
+<script>
+  // by cgpt: Share one observer across cards; retain full-resolution first-frame covers.
+  import "../scripts/publication-motion-by-cgpt";
+</script>

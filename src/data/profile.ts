@@ -18,6 +18,8 @@ export type Publication = {
   // by cgpt: Display the author's requested venue classifications.
   venueBadge?: "Top Conference" | "Top Journal" | "Q1" | "Q3";
   image?: string;
+  // by cgpt: A pixel-exact first-frame cover defers the larger lossless animation.
+  imagePoster?: string;
   imageAlt?: string;
   mediaAspect?: "wide";
   // by cgpt: Use false when an overlaid label would obscure a scientific figure.
@@ -82,7 +84,9 @@ export const publications: Publication[] = [
     venue: "CoRL 2026 (Oral)",
     year: "2026",
     venueBadge: "Top Conference",
-    image: "/videos/pace/pace_overview_4x_refine_clear.gif",
+    // by cgpt: Pixel-exact lossless animation and full-resolution first-frame cover.
+    image: "/videos/pace/pace_overview_4x_refine_clear-lossless-by-cgpt.webp",
+    imagePoster: "/videos/pace/pace_overview_4x_refine_clear-poster-lossless-by-cgpt.webp",
     imageAlt: "PACE temporal roles and representative insertion tasks animation",
     mediaAspect: "wide",
     mediaLabel: "CoRL 2026 (Oral)",
@@ -107,7 +111,9 @@ export const publications: Publication[] = [
     venue: "IEEE Robotics and Automation Letters (Under Review)",
     year: "2026",
     // by cgpt: Preserve the requested source slices: 0–3 s followed by 12–25 s.
-    image: "/videos/foretac/foretac-overview-3s-plus-12-25s-by-cgpt.gif",
+    // by cgpt: Pixel-exact lossless animation and full-resolution first-frame cover.
+    image: "/videos/foretac/foretac-overview-3s-plus-12-25s-lossless-by-cgpt.webp",
+    imagePoster: "/videos/foretac/foretac-overview-3s-plus-12-25s-poster-lossless-by-cgpt.webp",
     imageAlt:
       "ForeTac overview: human contact anticipation and predictive robot contact guidance from tactile foresight",
     mediaAspect: "wide",
@@ -155,7 +161,9 @@ export const publications: Publication[] = [
     venue: "AAAI 2027 (Under Review)",
     year: "2026",
     versionNote: "2026 · Xiaomi Technical Report (public version)",
-    image: "/videos/ucag-p/ucag-p-human-to-robot-2x-by-cgpt.gif",
+    // by cgpt: Pixel-exact lossless animation and full-resolution first-frame cover.
+    image: "/videos/ucag-p/ucag-p-human-to-robot-2x-lossless-by-cgpt.webp",
+    imagePoster: "/videos/ucag-p/ucag-p-human-to-robot-2x-poster-lossless-by-cgpt.webp",
     imageAlt:
       "UCAG-P human-to-robot transfer: a human demonstrates bread pickup, followed by the robot performing the task",
     mediaAspect: "wide",
@@ -176,7 +184,9 @@ export const publications: Publication[] = [
     venue: "MobiCom 2027 (Under Review)",
     year: "2026",
     // by cgpt: Official real-robot obstacle clips, aligned at board insertion with the full view preserved.
-    image: "/videos/alter/alter-obstacle-board-comparison-by-cgpt.gif",
+    // by cgpt: Pixel-exact lossless animation and full-resolution first-frame cover.
+    image: "/videos/alter/alter-obstacle-board-comparison-lossless-by-cgpt.webp",
+    imagePoster: "/videos/alter/alter-obstacle-board-comparison-poster-lossless-by-cgpt.webp",
     imageAlt:
       "Real-robot obstacle comparison: pi0.5 tips the bowl after a board is introduced, while ALTER lifts the block over the board and places it in the bowl",
     mediaAspect: "wide",
@@ -197,7 +207,9 @@ export const publications: Publication[] = [
     venue: "IEEE Transactions on Instrumentation and Measurement",
     year: "2024",
     venueBadge: "Top Journal",
-    image: "/videos/tim-ibvs/ibvs_overview_view2_2x_clean_clear.gif",
+    // by cgpt: Pixel-exact lossless animation and full-resolution first-frame cover.
+    image: "/videos/tim-ibvs/ibvs_overview_view2_2x_clean_clear-lossless-by-cgpt.webp",
+    imagePoster: "/videos/tim-ibvs/ibvs_overview_view2_2x_clean_clear-poster-lossless-by-cgpt.webp",
     imageAlt: "Monocular visual servoing: orientation alignment followed by docking",
     mediaAspect: "wide",
     mediaLabel: "IEEE TIM 2025",
@@ -217,7 +229,9 @@ export const publications: Publication[] = [
     venue: "Advanced Engineering Informatics",
     year: "2024",
     venueBadge: "Top Journal",
-    image: "/videos/aei/aei_overview_preview_clear.gif",
+    // by cgpt: Pixel-exact lossless animation and full-resolution first-frame cover.
+    image: "/videos/aei/aei_overview_preview_clear-lossless-by-cgpt.webp",
+    imagePoster: "/videos/aei/aei_overview_preview_clear-poster-lossless-by-cgpt.webp",
     imageAlt: "Mobile robot stacking blocks with a visual reference system",
     mediaAspect: "wide",
     mediaLabel: "AEI 2024",
@@ -237,7 +251,9 @@ export const publications: Publication[] = [
     venue: "Journal of Construction Engineering and Management",
     year: "2025",
     venueBadge: "Q1",
-    image: "/videos/jcem-handling/jcem_overview_preview_lite_clear.gif",
+    // by cgpt: Pixel-exact lossless animation and full-resolution first-frame cover.
+    image: "/videos/jcem-handling/jcem_overview_preview_lite_clear-lossless-by-cgpt.webp",
+    imagePoster: "/videos/jcem-handling/jcem_overview_preview_lite_clear-poster-lossless-by-cgpt.webp",
     imageAlt: "A robot arm places a block onto a collaborating mobile platform",
     mediaAspect: "wide",
     mediaLabel: "JCEM 2025",
@@ -257,7 +273,9 @@ export const publications: Publication[] = [
     venue: "Manufacturing Letters",
     year: "2023",
     venueBadge: "Q3",
-    image: "/videos/namrc/namrc_overview_preview_clear.gif",
+    // by cgpt: Pixel-exact lossless animation and full-resolution first-frame cover.
+    image: "/videos/namrc/namrc_overview_preview_clear-lossless-by-cgpt.webp",
+    imagePoster: "/videos/namrc/namrc_overview_preview_clear-poster-lossless-by-cgpt.webp",
     imageAlt: "A multi-camera system measures an object held by a robot arm",
     mediaAspect: "wide",
     mediaLabel: "NAMRC 2023",
