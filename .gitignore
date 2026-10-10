@@ -1,0 +1,9 @@
+/node_modules
+/dist
+/.astro
+.DS_Store
+/midocx/
+/个人主页/
+
+# The source resume contains private contact and identity details.
+/陈志远-清华大学2025届博士-智能机器人方向-个人简历.pdf

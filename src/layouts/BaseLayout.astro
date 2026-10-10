@@ -1,0 +1,118 @@
+---
+import "../styles/global.css";
+import { Menu, X } from "lucide-astro";
+// by cgpt: Refresh all browser icons whenever the selected avatar changes.
+import { avatarByCgpt } from "../data/avatarByCgpt";
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+const canonical = Astro.site
+  ? new URL(Astro.url.pathname, Astro.site)
+  : Astro.url;
+const socialImage = Astro.site
+  ? new URL("/images/og-image.jpg", Astro.site)
+  : new URL("/images/og-image.jpg", Astro.url);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#ffffff" />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href={`/favicon.ico?v=${avatarByCgpt.iconVersion}`} sizes="any" />
+    <link rel="icon" type="image/png" sizes="32x32" href={`/images/avatar-icon-32.png?v=${avatarByCgpt.iconVersion}`} />
+    <link rel="apple-touch-icon" sizes="180x180" href={`/images/avatar-icon-180.png?v=${avatarByCgpt.iconVersion}`} />
+    <meta property="og:type" content="profile" />
+    <meta property="og:site_name" content="Zhiyuan" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={socialImage} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={socialImage} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="topbar-inner">
+        <a class="brand" href="/#about-me" aria-label="Homepage">
+          Homepage
+        </a>
+        <button class="nav-toggle" type="button" aria-controls="main-nav" aria-expanded="false" aria-label="Open navigation" title="Navigation">
+          <Menu class="nav-open-icon" size={22} aria-hidden="true" />
+          <X class="nav-close-icon" size={22} aria-hidden="true" />
+        </button>
+        <nav id="main-nav" class="main-nav" aria-label="Primary navigation">
+          <a href="/#about-me" data-nav>About Me</a>
+          <a href="/#-news" data-nav>News</a>
+          <a href="/#publications" data-nav>Publications</a>
+          <a href="/#patents" data-nav>Patents</a>
+          <a href="/#competitions" data-nav>Competitions</a>
+          <a href="/#research-and-projects" data-nav>Research and Projects</a>
+          <a href="/#work-experience" data-nav>Work Experience</a>
+          <a href="/#educations" data-nav>Educations</a>
+          <!-- by cgpt: Match the Awards section after Educations. -->
+          <a href="/#awards-honors" data-nav>Awards &amp; Honors</a>
+        </nav>
+      </div>
+    </header>
+    <slot />
+
+    <script is:inline>
+      const links = Array.from(document.querySelectorAll("[data-nav]"));
+      const toggle = document.querySelector(".nav-toggle");
+      const navigation = document.querySelector(".main-nav");
+      const closeNavigation = () => {
+        toggle.setAttribute("aria-expanded", "false");
+        toggle.setAttribute("aria-label", "Open navigation");
+      };
+      toggle.addEventListener("click", () => {
+        const open = toggle.getAttribute("aria-expanded") !== "true";
+        toggle.setAttribute("aria-expanded", String(open));
+        toggle.setAttribute("aria-label", open ? "Close navigation" : "Open navigation");
+      });
+      links.forEach((link) => link.addEventListener("click", closeNavigation));
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && toggle.getAttribute("aria-expanded") === "true") {
+          closeNavigation();
+          toggle.focus();
+        }
+      });
+      document.addEventListener("click", (event) => {
+        if (!navigation.contains(event.target) && !toggle.contains(event.target)) closeNavigation();
+      });
+      const sections = links
+        .map((link) => document.querySelector(new URL(link.href).hash))
+        .filter(Boolean);
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          const visible = entries
+            .filter((entry) => entry.isIntersecting)
+            .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+          if (!visible) return;
+          links.forEach((link) => {
+            if (new URL(link.href).hash === `#${visible.target.id}`) {
+              link.setAttribute("aria-current", "location");
+            } else {
+              link.removeAttribute("aria-current");
+            }
+          });
+        },
+        { rootMargin: "-18% 0px -66%", threshold: [0, 0.2, 0.6] },
+      );
+
+      sections.forEach((section) => observer.observe(section));
+    </script>
+  </body>
+</html>

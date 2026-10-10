@@ -1,0 +1,52 @@
+---
+// by cgpt: Keep verified patent-stage display separate from concurrent profile edits.
+import { patentDisplayRecords } from "../data/patent-display-by-cgpt";
+// by cgpt: Keep individual inventor names and short phrases intact at each width.
+import InlineTextByCgpt from "./InlineTextByCgpt.astro";
+
+const yearOnly = (value: string) => value.slice(0, 4);
+const yearOnlyNote = (value: string) => value.replace(/\d{4}(?:-\d{2}){1,2}/gu, (date) => date.slice(0, 4));
+---
+
+<section id="patents" class="content-section" aria-labelledby="patents-title">
+  <div class="section-heading compact">
+    <div><h2 id="patents-title"><span aria-hidden="true">📜</span> Patents</h2></div>
+  </div>
+  <div class="patent-list-header" aria-hidden="true">
+    <span>#</span><span>Patent</span><span>Date</span><span>Status</span>
+  </div>
+  <ol class="patent-list">
+    {patentDisplayRecords.map((patent, index) => (
+      <li>
+        <span class="patent-index" aria-hidden="true">[{index + 1}]</span>
+        <div class="patent-content">
+          <p class="patent-title-en" lang="en"><InlineTextByCgpt text={patent.titleEn} /></p>
+          {!patent.hideChineseTitle && <p class="patent-title-zh" lang="zh-CN"><InlineTextByCgpt text={patent.titleZh} /></p>}
+          <p class="patent-authors" lang="en">
+            <span class="patent-authors-label-by-cgpt">Authors:</span>{" "}
+            <InlineTextByCgpt text={patent.authorsHtml ?? patent.authors} html={Boolean(patent.authorsHtml)} names />
+          </p>
+          {patent.number && patent.href ? (
+            <a class="patent-number" href={patent.href} target="_blank" rel="noopener noreferrer" aria-label={`Open patent record for ${patent.titleEn}`}>
+              {patent.number}
+            </a>
+          ) : patent.number ? <span class="patent-number">{patent.number}</span> : null}
+        </div>
+        {patent.date ? (
+          <time class="patent-date" datetime={yearOnly(patent.date)} title={yearOnlyNote(patent.dateNote)} aria-label={`Patent record year: ${yearOnly(patent.date)}`}>{yearOnly(patent.date)}</time>
+        ) : (
+          <span class="patent-date" lang="zh-CN" title={patent.dateNote}>日期待核实</span>
+        )}
+        <small class="patent-status">
+          <span lang="en">{patent.status}</span>
+          <span class="patent-status-zh" lang="zh-CN">{patent.statusZh}</span>
+        </small>
+      </li>
+    ))}
+  </ol>
+</section>
+
+<style>
+  /* by cgpt: Stack the Chinese legal stage under the existing English status. */
+  .patent-status-zh { display: block; margin-top: 4px; }
+</style>

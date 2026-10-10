@@ -1,0 +1,52 @@
+---
+import OrganizationText from "./OrganizationText.astro";
+
+interface Props {
+  text: string;
+  size?: number;
+}
+
+const { text, size = 20 } = Astro.props;
+
+// by cgpt: Match the original English issuer names printed on the 2019 NECCS certificate.
+// Source: 个人主页/个人荣誉等证明材料/获奖10-全国大学生英语竞赛二等奖.jpg.
+const displayText = text
+  .replace("China Association of College English Teachers", "TEFL China")
+  .replace("National College Foreign Language Teaching Research Association", "College English Teaching & Research Association of China");
+
+// by cgpt: Use the complete official Hubei society mark, including its name;
+// its embedded university emblem alone would identify a different organization.
+// by cgpt: Archive unused organization artwork in the local media workspace.
+// Source: https://www.hbmath.com.cn/.
+const supplementalLogos: Record<string, { src: string; aspect: number }> = {
+  "Hubei Mathematical Society": { src: "/images/hbmath-mark-by-cgpt.png", aspect: 578 / 132 },
+};
+const parts = displayText.split(/(Hubei Mathematical Society)/gu);
+---
+
+{parts.map((part) => {
+  const logo = supplementalLogos[part];
+  return logo ? (
+    <span class="organization-name" data-organization={part}><img class="organization-logo" src={logo.src} alt="" aria-hidden="true" width={Math.round(size * logo.aspect)} height={size} /><span>{part}</span></span>
+  ) : <OrganizationText text={part} size={size} />;
+})}
+
+<style>
+  /* by cgpt: Follow the shared inline organization layout and inherited justification. */
+  .organization-name {
+    display: inline-flex;
+    max-width: 100%;
+    align-items: center;
+    gap: 0.25em;
+    vertical-align: middle;
+  }
+
+  .organization-logo {
+    flex: 0 0 auto;
+    object-fit: contain;
+  }
+
+  .organization-name > span {
+    min-width: 0;
+  }
+</style>

@@ -1,0 +1,69 @@
+---
+// by cgpt: Isolate classification and recipients from the shared profile source.
+import OrganizationText from "./OrganizationText.astro";
+import CompetitionOrganizationByCgpt from "./CompetitionOrganizationByCgpt.astro";
+import InlineTextByCgpt from "./InlineTextByCgpt.astro";
+import { competitionDisplayRecords, honorDisplayRecords } from "../data/award-display-by-cgpt";
+
+interface Props { kind: "competitions" | "honors"; }
+const { kind } = Astro.props;
+const isCompetition = kind === "competitions";
+const id = isCompetition ? "competitions" : "awards-honors";
+const titleId = isCompetition ? "competitions-title" : "honors-title";
+const records = isCompetition ? competitionDisplayRecords : honorDisplayRecords;
+const yearOnly = (date?: string) => date?.match(/\d{4}/gu)?.join(", ") ?? "";
+---
+
+<section id={id} class="content-section" aria-labelledby={titleId}>
+  <div class="section-heading compact">
+    <div>
+      <h2 id={titleId}><span aria-hidden="true">{isCompetition ? "🏆" : "🏅"}</span>{" "}{isCompetition ? "Competitions" : "Awards & Honors"}</h2>
+    </div>
+  </div>
+  <div class="awards-list-header" aria-hidden="true">
+    <span>#</span><span>{isCompetition ? "Competition" : "Honor"}</span><span>Date</span><span>Awarding organization</span>
+  </div>
+  <ol class="award-list">
+    {records.map((award, index) => (
+      <li id={award.id}>
+        <span class="award-index" aria-hidden="true">[{index + 1}]</span>
+        <div class="award-content">
+          <p class="award-title" lang="en"><InlineTextByCgpt text={award.titleEn} /></p>
+          <p class="award-title-zh" lang="zh-CN"><InlineTextByCgpt text={award.titleZh} /></p>
+          <p class="award-recipients" lang="en"><span>Awardees:</span> <InlineTextByCgpt text={award.recipientsHtml} html names /></p>
+        </div>
+        {award.date ? (
+          <time class="award-date" datetime={yearOnly(award.date).split(", ").at(-1)}>{yearOnly(award.date)}</time>
+        ) : <span class="award-date" aria-hidden="true"></span>}
+        <span class="award-organization">
+          {isCompetition ? <CompetitionOrganizationByCgpt text={award.awardingOrganization} /> : <OrganizationText text={award.awardingOrganization} />}
+        </span>
+      </li>
+    ))}
+  </ol>
+</section>
+
+<style>
+  /* by cgpt: Balance the whitespace on both sides of the competitions date column. */
+  @media (min-width: 521px) {
+    /* by cgpt: Give the competition title 35px more space by narrowing the year column. */
+    #competitions .awards-list-header,
+    #competitions .award-list > li {
+      grid-template-columns: 45px minmax(0, 1fr) 80px 245px;
+    }
+
+    #competitions .awards-list-header > span:nth-child(3),
+    #competitions .award-date {
+      justify-self: center;
+    }
+  }
+
+  @media (min-width: 521px) and (max-width: 767px) {
+    /* by cgpt: Keep the same improvement in the narrower table layout. */
+    #competitions .awards-list-header,
+    #competitions .award-list > li {
+      grid-template-columns: 35px minmax(0, 1fr) 70px 180px;
+    }
+  }
+
+</style>

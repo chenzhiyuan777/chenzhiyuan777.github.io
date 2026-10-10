@@ -1,0 +1,31 @@
+---
+import { Mail } from "lucide-astro";
+import OrganizationText from "./OrganizationText.astro";
+// by cgpt: Avatar and icons share one selection, updated by the sibling avatar switch script.
+import { avatarByCgpt, avatarImageByCgpt } from "../data/avatarByCgpt";
+---
+
+<aside class="profile-rail" aria-label="Profile summary">
+  <!-- by cgpt: Use the shared selection and retain both source avatars for switching. -->
+  <img
+    class="profile-photo"
+    src={avatarImageByCgpt}
+    alt="Zhiyuan Chen with a robotic arm"
+    width={avatarByCgpt.width}
+    height={avatarByCgpt.height}
+  />
+  <div class="profile-heading">
+    <p class="profile-name">Zhiyuan Chen</p>
+    <p class="profile-name-cn" lang="zh-CN">陈志远</p>
+  </div>
+  <p class="profile-role"><OrganizationText text="Robotics researcher Xiaomi" size={18} /></p>
+  <div class="profile-facts">
+    <p class="profile-detail"><OrganizationText text="Ph.D., Tsinghua University" size={18} /></p>
+  </div>
+  <div class="profile-links" aria-label="Contact links">
+    <a href="mailto:chenzy19@tsinghua.edu.cn">
+      <Mail size={17} strokeWidth={1.8} aria-hidden="true" />
+      Email
+    </a>
+  </div>
+</aside>

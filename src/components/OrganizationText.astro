@@ -1,0 +1,42 @@
+---
+import OrganizationName from "./OrganizationName.astro";
+// by cgpt: Keep short venue-year and numbered phrases together in mixed text.
+import InlineTextByCgpt from "./InlineTextByCgpt.astro";
+
+interface Props {
+  text: string;
+  size?: number;
+  emphasize?: boolean;
+}
+
+const { text, size = 20, emphasize = false } = Astro.props;
+const parts = text.split(
+  /(IROS 2026 Workshop Organizers|Chinese Society for Industrial and Applied Mathematics|Chinese Mathematical Society|Hubei Provincial Committee of the Communist Youth League|Hubei Students' Federation Secretariat|Ministry of Education Higher Education Mechanics Teaching Guidance Committee|Ministry of Education, PRC|Communist Youth League Committee of Wuhan University of Science and Technology|Tsinghua University Graduate School and Tsinghua University Tianjin Institute for Advanced Equipment|Tsinghua University Graduate Party Affairs Office|Tsinghua University Guoqiang Research Institute|Wuhan University of Science and Technology|Samsung Electronics China|Techtronic Industries \(TTI\)|Tsinghua University|Huawei|Xiaomi|IATEFL|COMAP|TTI)/g,
+);
+const organizations = new Set([
+  "Xiaomi",
+  "Tsinghua University",
+  "Huawei",
+  "Wuhan University of Science and Technology",
+  "Communist Youth League Committee of Wuhan University of Science and Technology",
+  "Tsinghua University Guoqiang Research Institute",
+  "Tsinghua University Graduate Party Affairs Office",
+  "Tsinghua University Graduate School and Tsinghua University Tianjin Institute for Advanced Equipment",
+  "Samsung Electronics China",
+  "Techtronic Industries (TTI)",
+  "TTI",
+  "Ministry of Education, PRC",
+  "Ministry of Education Higher Education Mechanics Teaching Guidance Committee",
+  "Hubei Provincial Committee of the Communist Youth League",
+  "Hubei Students' Federation Secretariat",
+  "COMAP",
+  "IATEFL",
+  "Chinese Mathematical Society",
+  "Chinese Society for Industrial and Applied Mathematics",
+  "IROS 2026 Workshop Organizers",
+]);
+---
+
+{parts.map((part) => organizations.has(part) ? (
+  emphasize ? <strong><OrganizationName name={part} size={size} /></strong> : <OrganizationName name={part} size={size} />
+) : <InlineTextByCgpt text={part} />)}

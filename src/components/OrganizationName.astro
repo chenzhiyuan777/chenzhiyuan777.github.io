@@ -1,0 +1,45 @@
+---
+// by cgpt: Protect short phrases inside names without locking the full institution name.
+import InlineTextByCgpt from "./InlineTextByCgpt.astro";
+
+interface Props {
+  name: string;
+  size?: number;
+}
+
+const { name, size = 20 } = Astro.props;
+const logos: Record<string, string> = {
+  // by cgpt: Transparent outer background preserves the mark on colored labels.
+  Xiaomi: "/images/xiaomi-transparent-by-cgpt.svg",
+  "Tsinghua University": "/images/tsinghua-mark.png",
+  Huawei: "/images/huawei-mark.png",
+  "Wuhan University of Science and Technology": "/images/wust-mark.png",
+  "Communist Youth League Committee of Wuhan University of Science and Technology": "/images/wust-mark.png",
+  "Tsinghua University Guoqiang Research Institute": "/images/tsinghua-mark.png",
+  "Tsinghua University Graduate Party Affairs Office": "/images/tsinghua-mark.png",
+  "Tsinghua University Graduate School and Tsinghua University Tianjin Institute for Advanced Equipment": "/images/tsinghua-mark.png",
+  "Samsung Electronics China": "/images/samsung-mark.svg",
+  "Techtronic Industries (TTI)": "/images/tti-mark.png",
+  TTI: "/images/tti-mark.png",
+  "Ministry of Education, PRC": "/images/moe-mark.png",
+  "Ministry of Education Higher Education Mechanics Teaching Guidance Committee": "/images/moe-mark.png",
+  "Hubei Provincial Committee of the Communist Youth League": "/images/cyl-mark.png",
+  "Hubei Students' Federation Secretariat": "/images/student-union-mark.png",
+  COMAP: "/images/comap-mark.svg",
+  IATEFL: "/images/iatefl-mark.png",
+  "Chinese Mathematical Society": "/images/cms-mark-symbol.png",
+  "Chinese Society for Industrial and Applied Mathematics": "/images/csiam-mark-symbol.png",
+  "IROS 2026 Workshop Organizers": "/images/iros-2026-mark.png",
+};
+const logo = logos[name];
+const logoClass = name === "Chinese Society for Industrial and Applied Mathematics"
+  ? "organization-logo organization-logo-csiam"
+  : name === "IROS 2026 Workshop Organizers"
+    ? "organization-logo organization-logo-iros"
+    : "organization-logo";
+---
+
+<span class="organization-name" data-organization={name}>
+  {logo && <img class={logoClass} src={logo} alt="" aria-hidden="true" width={size} height={size} />}
+  <span><InlineTextByCgpt text={name} /></span>
+</span>

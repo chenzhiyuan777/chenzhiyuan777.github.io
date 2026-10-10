@@ -1,0 +1,14 @@
+---
+// by cgpt: Shared rendering for short phrases and individual names that must not split.
+import { inlineTextByCgpt } from "../utils/inline-text-by-cgpt";
+
+interface Props {
+  text: string;
+  html?: boolean;
+  names?: boolean;
+}
+
+const { text, html = false, names = false } = Astro.props;
+---
+
+<Fragment set:html={inlineTextByCgpt(text, { html, names })} />

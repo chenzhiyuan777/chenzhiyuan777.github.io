@@ -1,0 +1,98 @@
+---
+import type { Publication } from "../data/profile";
+// by cgpt: Reuse the site's institution text and logo treatment in venue labels.
+import OrganizationText from "./OrganizationText.astro";
+// by cgpt: Share semantic phrase and individual-name wrapping across publications.
+import InlineTextByCgpt from "./InlineTextByCgpt.astro";
+
+interface Props {
+  publication: Publication;
+}
+
+const { publication } = Astro.props;
+// by cgpt: Undefined positions keep the CoRL-style label overlay on the media frame.
+const mediaLabelPosition = publication.mediaLabelPosition;
+---
+
+<article
+  id={publication.id}
+  class:list={["publication-item", publication.placeholder && "is-placeholder"]}
+>
+  <div class:list={[
+    "publication-media",
+    publication.mediaAspect === "wide" && "publication-media-wide",
+    mediaLabelPosition === "above" && "publication-media-label-space",
+  ]}>
+    {
+      publication.image ? (
+        <img
+          src={publication.image}
+          alt={publication.imageAlt ?? ""}
+          width={publication.mediaAspect === "wide" ? 640 : 720}
+          height={publication.mediaAspect === "wide" ? 360 : 450}
+          loading="lazy"
+        />
+      ) : (
+        <div class="publication-media-placeholder" aria-label="Project figure pending">
+          <span>{publication.year}</span>
+          <small>Figure pending</small>
+        </div>
+      )
+    }
+    {
+      publication.image && publication.mediaLabel !== false && (
+        <span class:list={[
+          "publication-media-label",
+          (mediaLabelPosition === "top-edge" || mediaLabelPosition === "above") && "publication-media-label-top-edge",
+        ]}>
+          <OrganizationText
+            text={publication.mediaLabel ?? `${publication.venue} ${publication.year}`}
+            size={12}
+          />
+        </span>
+      )
+    }
+  </div>
+  <div class="publication-body">
+    <!-- by cgpt: Venue classifications follow the author's requested labels. -->
+    <p class="publication-meta">
+      <span><OrganizationText text={`${publication.year} · ${publication.venue}`} size={14} /></span>
+      {publication.venueBadge && (
+        <span class="publication-venue-badge">{publication.venueBadge}</span>
+      )}
+    </p>
+    <!-- by cgpt: Distinguish the public report from its conference submission. -->
+    {publication.versionNote && (
+      <p class="publication-meta publication-version">
+        <span><OrganizationText text={publication.versionNote} size={14} /></span>
+      </p>
+    )}
+    <h3><InlineTextByCgpt text={publication.title} /></h3>
+    {publication.authorsHtml ? (
+      <p class="publication-authors"><InlineTextByCgpt text={publication.authorsHtml} html names /></p>
+    ) : (
+      <p class="publication-authors"><InlineTextByCgpt text={publication.authors} names /></p>
+    )}
+    {publication.correspondingAuthorNote && (
+      <p class="publication-corresponding"><InlineTextByCgpt text={publication.correspondingAuthorNote} /></p>
+    )}
+    <!-- by cgpt: Match the reference's paired resource links below the authors. -->
+    {
+      publication.links && publication.links.length > 0 && (
+        <div class="publication-links" aria-label={`Resources for ${publication.title}`}>
+          {publication.links.map((link) => link.href ? (
+              <a href={link.href} target="_blank" rel="noopener noreferrer">
+                {link.label}
+              </a>
+            ) : (
+              <span class="publication-link-pending" aria-disabled="true">
+                {link.label} <small>({link.note})</small>
+              </span>
+            )
+          )}
+        </div>
+      )
+    }
+    {publication.summary && <p class="publication-summary"><InlineTextByCgpt text={publication.summary} /></p>}
+  </div>
+</article>
