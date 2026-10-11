@@ -79,6 +79,14 @@ img {
   max-width: 100%;
 }
 
+img,
+video {
+  -webkit-touch-callout: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
 p,
 h1,
 h2,
@@ -309,11 +317,6 @@ h3 {
   min-width: 0;
   padding-left: 5.1%;
   padding-bottom: 30px;
-}
-
-.intro-section,
-.content-section {
-  scroll-margin-top: calc(var(--nav-height) + 20px);
 }
 
 .intro-section {

@@ -73,8 +73,11 @@ The 0.31 MB figure comes directly from the original 4076×2508 image. Together
 they require 2.72 MB, about 91% less than the rejected 30.56 MB WebP/cover pair.
 The original figure overlays the video for the first four seconds of each loop,
 using media time rather than a timer. No player controls are displayed.
-`src/scripts/publication-video-by-cgpt.ts` starts muted playback within 100px
-of the viewport and pauses it outside that area or when the document is hidden.
+<!-- by cgpt: Loading and playback share the scheduling rules in AGENTS.md. -->
+`src/scripts/publication-video-by-cgpt.ts` uses the shared media scheduler:
+visible and nearby entries receive download priority, while muted playback
+starts only when the figure is actually visible and its own cover is ready.
+Playback pauses offscreen or when the document is hidden.
 Failed loading or initially blocked autoplay retains the figure. Without JavaScript,
 the original MP4 plays directly with its native figure introduction.
 <!-- by cgpt: Publish only selected PACE media; archive every earlier candidate locally. -->
@@ -90,12 +93,17 @@ each have a single Video link that opens their respective YouTube playlist
 directly. NAMRC's earlier two-video chooser is no longer part of the page.
 Paper links use the verified publisher DOIs. Resource links
 appear directly below the authors, following the live reference homepage.
-<!-- by cgpt: Covers prevent large below-screen animations from loading during refresh. -->
+<!-- by cgpt: Cover-first display and bounded prediction apply to every new entry. -->
 Each WebP entry sets `imagePoster` to a lossless full-resolution first-frame
-cover. `src/scripts/publication-motion-by-cgpt.ts` loads the animation when it is
-within 100px of the viewport, then replaces the cover after loading succeeds.
+cover. `src/scripts/publication-motion-by-cgpt.ts` uses the shared scheduler to
+prepare visible entries, the 100px margin, and the next two dynamic entries in
+the reading direction. It replaces the cover only after the animation is ready
+and actually visible.
 The cover stays visible on failure. Without JavaScript, the animation is rendered
 directly. Both states keep the existing frame and upper-left blue label.
+The authoritative maintenance rules are in [AGENTS.md](AGENTS.md), including
+cover priority, bounded prediction, network adaptation, cancellation, and the
+checks required when adding or changing publication media.
 PACE has Project and Paper entries, but Paper is explicitly marked Coming soon
 until a public URL is supplied; its project page currently uses `#` for that link.
 To activate it, replace the Paper entry's `note` with `href` in `profile.ts`.

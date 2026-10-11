@@ -45,6 +45,7 @@ const mediaLabelPosition = publication.mediaLabelPosition;
             <img
               class="publication-video-cover-by-cgpt"
               data-video-cover-by-cgpt
+              data-publication-cover-by-cgpt
               src={publication.image}
               alt=""
               aria-hidden="true"
@@ -75,6 +76,7 @@ const mediaLabelPosition = publication.mediaLabelPosition;
         </Fragment>
       ) : publication.image ? (
         <img
+          data-publication-cover-by-cgpt
           src={publication.imagePoster ?? publication.image}
           data-motion-src={publication.imagePoster ? publication.image : undefined}
           alt={publication.imageAlt ?? ""}
@@ -162,8 +164,8 @@ const mediaLabelPosition = publication.mediaLabelPosition;
 </article>
 
 <script>
-  // by cgpt: Share one observer across cards; retain full-resolution first-frame covers.
+  // by cgpt: Share viewport and prefetch priorities; retain full-resolution covers.
   import "../scripts/publication-motion-by-cgpt";
-  // by cgpt: Videos have their own playback lifecycle; existing WebP behavior stays shared.
+  // by cgpt: Native video playback and WebP preloading use the same bounded queue.
   import "../scripts/publication-video-by-cgpt";
 </script>

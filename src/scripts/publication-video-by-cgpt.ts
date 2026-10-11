@@ -1,4 +1,6 @@
 // by cgpt: Play reviewed MP4 sources without transcoding, retaining clear figure introductions.
+import { registerPublicationMediaByCgpt } from "./publication-media-scheduler-by-cgpt";
+
 const videos = document.querySelectorAll<HTMLVideoElement>(
   "video[data-publication-video-by-cgpt]",
 );
@@ -13,10 +15,14 @@ for (const video of videos) {
   const figureSeconds = Number.isFinite(configuredSeconds)
     ? Math.max(0, configuredSeconds)
     : 0;
-  let nearViewport = false;
+  let visible = false;
   let loaded = false;
   let played = false;
   let failed = false;
+  let playPending = false;
+  let preparation: Promise<void> | undefined;
+  // Preloading outside the viewport must not autoplay or consume the introduction.
+  video.autoplay = false;
 
   function updateCover(mediaTime = video.currentTime) {
     if (cover) {
@@ -26,27 +32,18 @@ for (const video of videos) {
   }
 
   function shouldPlay() {
-    return nearViewport && !document.hidden && !failed;
+    return visible && loaded && !document.hidden && !failed;
   }
 
   function playWhenVisible() {
-    if (!shouldPlay()) return;
+    if (!shouldPlay() || !video.paused || playPending) return;
     // The property is explicit because browsers distinguish muted from defaultMuted.
     video.muted = true;
+    playPending = true;
     void video.play().catch(() => {
       // Autoplay rejection or an interrupted load keeps a useful image in the card.
       if (!played) updateCover();
-    });
-  }
-
-  function enterViewport() {
-    nearViewport = true;
-    if (!loaded) {
-      loaded = true;
-      video.src = source!;
-      video.load();
-    }
-    playWhenVisible();
+    }).finally(() => { playPending = false; });
   }
 
   video.addEventListener("playing", () => {
@@ -79,21 +76,52 @@ for (const video of videos) {
     video.requestVideoFrameCallback(onFrame);
   }
 
-  if ("IntersectionObserver" in window) {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          if (entry.isIntersecting) enterViewport();
-          else {
-            nearViewport = false;
-            video.pause();
+  registerPublicationMediaByCgpt({
+    element: video,
+    source,
+    prepare() {
+      preparation ??= new Promise<void>((resolve, reject) => {
+        let settled = false;
+        const finish = (error?: Error) => {
+          if (settled) return;
+          settled = true;
+          clearTimeout(timer);
+          for (const name of ["progress", "canplaythrough", "suspend", "loadeddata"]) {
+            video.removeEventListener(name, checkBuffer);
           }
+          video.removeEventListener("error", onError);
+          if (error) reject(error);
+          else resolve();
+        };
+        const checkBuffer = () => {
+          if (video.readyState < 2) return;
+          const duration = video.duration;
+          const bufferedEnd = video.buffered.length ? video.buffered.end(video.buffered.length - 1) : 0;
+          // Native video buffering can stop before an entire long source is downloaded.
+          if ((Number.isFinite(duration) && bufferedEnd >= duration - 0.15) ||
+              (video.networkState === HTMLMediaElement.NETWORK_IDLE && video.readyState >= 3)) finish();
+        };
+        const onError = () => finish(new Error("Video unavailable"));
+        const timer = setTimeout(() => {
+          if (video.readyState >= 2) finish();
+          else finish(new Error("Video timeout"));
+        }, 45_000);
+        for (const name of ["progress", "canplaythrough", "suspend", "loadeddata"]) {
+          video.addEventListener(name, checkBuffer);
         }
-      },
-      { rootMargin: "100px 0px" },
-    );
-    observer.observe(video);
-  } else {
-    enterViewport();
-  }
+        video.addEventListener("error", onError);
+        loaded = true;
+        video.preload = "auto";
+        video.src = source!;
+        video.load();
+        playWhenVisible();
+      });
+      return preparation;
+    },
+    setVisible(value) {
+      visible = value;
+      if (shouldPlay()) playWhenVisible();
+      else video.pause();
+    },
+  });
 }

@@ -50,7 +50,9 @@ const personSchema = {
 };
 ---
 
-<BaseLayout title={title} description={description}>
+<!-- by cgpt: The first selected cover can be prioritized on large desktop screens. -->
+<BaseLayout title={title} description={description}
+  priorityPublicationCoverByCgpt={publications[0]?.imagePoster ?? publications[0]?.image}>
   <script
     type="application/ld+json"
     is:inline

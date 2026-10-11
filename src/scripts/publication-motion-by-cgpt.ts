@@ -1,38 +1,81 @@
-// by cgpt: Load pixel-exact animations only within 100px of the visible page.
+// by cgpt: Preload original lossless animations through the shared priority queue.
+import { registerPublicationMediaByCgpt } from "./publication-media-scheduler-by-cgpt";
+
 const animations = document.querySelectorAll<HTMLImageElement>(
   ".publication-media > img[data-motion-src]",
 );
 
-function loadAnimation(image: HTMLImageElement) {
+for (const image of animations) {
   const source = image.dataset.motionSrc;
-  if (!source) return;
-  delete image.dataset.motionSrc;
+  if (!source) continue;
+  let animation: HTMLImageElement | undefined;
+  let preparation: Promise<void> | undefined;
+  let ready = false;
+  let visible = false;
+  let priority: "high" | "low" = "low";
+  let cancelPreparation: (() => void) | undefined;
 
-  // Keep the clear first-frame cover visible until the complete animation is ready.
-  const animation = new Image();
-  animation.onload = () => {
-    image.src = source;
+  function displayWhenReady() {
+    if (!ready || !visible || image.dataset.motionLoaded === "true") return;
+    // Background preloads keep the static cover until this card is actually visible.
+    image.src = source!;
+    delete image.dataset.motionSrc;
     image.dataset.motionLoaded = "true";
-  };
-  animation.onerror = () => {
-    // A failed request keeps the original-resolution cover visible.
-    image.dataset.motionSrc = source;
-  };
-  animation.src = source;
-}
+  }
 
-if ("IntersectionObserver" in window) {
-  const observer = new IntersectionObserver(
-    (entries) => {
-      for (const entry of entries) {
-        if (!entry.isIntersecting) continue;
-        observer.unobserve(entry.target);
-        loadAnimation(entry.target as HTMLImageElement);
-      }
+  registerPublicationMediaByCgpt({
+    element: image,
+    source,
+    prepare() {
+      preparation ??= new Promise<void>((resolve, reject) => {
+        animation = new Image();
+        animation.fetchPriority = priority;
+        const timer = setTimeout(() => {
+          animation!.onload = null;
+          animation!.onerror = null;
+          animation!.src = "";
+          cancelPreparation = undefined;
+          reject(new Error("Animation timeout"));
+        }, 45_000);
+        cancelPreparation = () => {
+          clearTimeout(timer);
+          animation!.onload = null;
+          animation!.onerror = null;
+          animation!.src = "";
+          animation = undefined;
+          preparation = undefined;
+          cancelPreparation = undefined;
+          reject(new DOMException("Prefetch superseded by visible media", "AbortError"));
+        };
+        animation.onload = () => {
+          clearTimeout(timer);
+          cancelPreparation = undefined;
+          ready = true;
+          displayWhenReady();
+          resolve();
+        };
+        animation.onerror = () => {
+          clearTimeout(timer);
+          cancelPreparation = undefined;
+          // Keep the full-resolution cover if the original animation is unavailable.
+          reject(new Error("Animation unavailable"));
+        };
+        animation.src = source!;
+      });
+      return preparation;
     },
-    { rootMargin: "100px 0px" },
-  );
-  animations.forEach((image) => observer.observe(image));
-} else {
-  animations.forEach(loadAnimation);
+    setVisible(value) {
+      visible = value;
+      displayWhenReady();
+    },
+    prioritize() {
+      priority = "high";
+      if (animation) animation.fetchPriority = priority;
+    },
+    cancel() {
+      if (!cancelPreparation || visible || ready) return false;
+      cancelPreparation();
+      return true;
+    },
+  });
 }

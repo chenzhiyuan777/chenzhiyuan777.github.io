@@ -7,9 +7,10 @@ import { avatarByCgpt } from "../data/avatarByCgpt";
 interface Props {
   title: string;
   description: string;
+  priorityPublicationCoverByCgpt?: string;
 }
 
-const { title, description } = Astro.props;
+const { title, description, priorityPublicationCoverByCgpt } = Astro.props;
 const canonical = Astro.site
   ? new URL(Astro.url.pathname, Astro.site)
   : Astro.url;
@@ -27,6 +28,14 @@ const socialImage = Astro.site
     <meta name="description" content={description} />
     <meta name="theme-color" content="#ffffff" />
     <link rel="canonical" href={canonical} />
+    {
+      /* by cgpt: Discover the expected first desktop figure before the body or JS.
+         Small/mobile viewports retain normal lazy loading below the introduction. */
+      priorityPublicationCoverByCgpt && (
+        <link rel="preload" as="image" href={priorityPublicationCoverByCgpt}
+          media="(min-width: 1280px) and (min-height: 850px)" fetchpriority="high" />
+      )
+    }
     <link rel="icon" href={`/favicon.ico?v=${avatarByCgpt.iconVersion}`} sizes="any" />
     <link rel="icon" type="image/png" sizes="32x32" href={`/images/avatar-icon-32.png?v=${avatarByCgpt.iconVersion}`} />
     <link rel="apple-touch-icon" sizes="180x180" href={`/images/avatar-icon-180.png?v=${avatarByCgpt.iconVersion}`} />
@@ -92,27 +101,63 @@ const socialImage = Astro.site
         if (!navigation.contains(event.target) && !toggle.contains(event.target)) closeNavigation();
       });
       const sections = links
-        .map((link) => document.querySelector(new URL(link.href).hash))
-        .filter(Boolean);
+        .map((link) => ({
+          link,
+          section: document.getElementById(new URL(link.href).hash.slice(1)),
+        }))
+        .filter((item) => item.section);
+      const topbar = document.querySelector(".topbar");
+      let activeLink;
+      let navigationFrame;
 
-      const observer = new IntersectionObserver(
-        (entries) => {
-          const visible = entries
-            .filter((entry) => entry.isIntersecting)
-            .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-          if (!visible) return;
-          links.forEach((link) => {
-            if (new URL(link.href).hash === `#${visible.target.id}`) {
-              link.setAttribute("aria-current", "location");
-            } else {
-              link.removeAttribute("aria-current");
-            }
-          });
-        },
-        { rootMargin: "-18% 0px -66%", threshold: [0, 0.2, 0.6] },
-      );
+      function updateActiveNavigation() {
+        if (!sections.length) return;
+        const readingLine = topbar.getBoundingClientRect().bottom + 20;
+        let current = sections[0];
+        let latestTop = -Infinity;
+        // Heading positions handle long chapters and News nested inside About Me.
+        for (const item of sections) {
+          const top = item.section.getBoundingClientRect().top;
+          if (top <= readingLine + 1 && top >= latestTop) {
+            current = item;
+            latestTop = top;
+          }
+        }
+        const pageHeight = document.documentElement.scrollHeight;
+        if (pageHeight > window.innerHeight && window.scrollY + window.innerHeight >= pageHeight - 2) {
+          current = sections[sections.length - 1];
+        }
+        if (activeLink === current.link) return;
+        activeLink = current.link;
+        links.forEach((link) => {
+          if (link === activeLink) {
+            link.setAttribute("aria-current", "location");
+          } else {
+            link.removeAttribute("aria-current");
+          }
+        });
+      }
 
-      sections.forEach((section) => observer.observe(section));
+      function scheduleNavigationUpdate() {
+        if (navigationFrame !== undefined) return;
+        navigationFrame = requestAnimationFrame(() => {
+          navigationFrame = undefined;
+          updateActiveNavigation();
+        });
+      }
+
+      window.addEventListener("scroll", scheduleNavigationUpdate, { passive: true });
+      for (const event of ["resize", "load", "pageshow", "hashchange"]) {
+        window.addEventListener(event, scheduleNavigationUpdate);
+      }
+      const content = document.querySelector(".content-column");
+      if (content && typeof ResizeObserver !== "undefined") {
+        new ResizeObserver(scheduleNavigationUpdate).observe(content);
+      }
+      updateActiveNavigation();
+    </script>
+    <script>
+      import "../scripts/media-protection-by-cgpt";
     </script>
   </body>
 </html>
