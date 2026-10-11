@@ -66,6 +66,13 @@ export const news: NewsItem[] = [
     jumpLabel: "View the PACE publication",
   },
   {
+    // by cgpt: Keep the grant news short; the curved arrow opens the full patent entry.
+    date: "2026",
+    text: "Robotic bin-picking invention patent granted.",
+    jumpHref: "#patent-bin-picking",
+    jumpLabel: "View the granted bin-picking patent",
+  },
+  {
     date: "2025",
     text: "Joined Xiaomi after completing my doctoral studies.",
   },
@@ -380,6 +387,8 @@ export const workExperience = experiences.filter(
 
 // Keep source dates at day precision for sorting and evidence; the page renders years only.
 type Patent = {
+  // by cgpt: Optional stable anchors let News link to the exact patent after sorting.
+  id?: string;
   titleEn: string;
   titleZh: string;
   hideChineseTitle?: boolean;
@@ -515,6 +524,8 @@ const patentRecords: Patent[] = [
     awardingOrganization: "National Intellectual Property Administration of China",
   },
   {
+    // by cgpt: The News arrow targets this Xiaomi bin-picking patent.
+    id: "patent-bin-picking",
     titleEn: "Manipulator Control Method, Apparatus, Manipulator, Robot, Medium, and Product",
     titleZh: "机械手的控制方法、装置、机械手、机器人、介质及产品",
     authors: "Zhiyuan Chen, Dongxiao Yang, Ran Cao, Yangwei You",

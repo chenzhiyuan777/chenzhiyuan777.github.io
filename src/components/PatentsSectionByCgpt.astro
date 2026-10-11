@@ -3,6 +3,7 @@
 import { patentDisplayRecords } from "../data/patent-display-by-cgpt";
 // by cgpt: Keep individual inventor names and short phrases intact at each width.
 import InlineTextByCgpt from "./InlineTextByCgpt.astro";
+// by cgpt: Render optional stable patent anchors for the curved News links.
 
 const yearOnly = (value: string) => value.slice(0, 4);
 const yearOnlyNote = (value: string) => value.replace(/\d{4}(?:-\d{2}){1,2}/gu, (date) => date.slice(0, 4));
@@ -17,7 +18,7 @@ const yearOnlyNote = (value: string) => value.replace(/\d{4}(?:-\d{2}){1,2}/gu, 
   </div>
   <ol class="patent-list">
     {patentDisplayRecords.map((patent, index) => (
-      <li>
+      <li id={patent.id}>
         <span class="patent-index" aria-hidden="true">[{index + 1}]</span>
         <div class="patent-content">
           <p class="patent-title-en" lang="en"><InlineTextByCgpt text={patent.titleEn} /></p>

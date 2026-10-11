@@ -418,7 +418,9 @@ h3 {
   outline-offset: 2px;
 }
 
+/* by cgpt: Keep every News destination clear of the sticky navigation. */
 .publication-item[id],
+.patent-list > li[id],
 .award-list > li[id] {
   scroll-margin-top: calc(var(--nav-height) + 20px);
 }
