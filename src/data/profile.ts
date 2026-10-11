@@ -608,7 +608,7 @@ const competitionAwardRecords: Award[] = [
     titleZh: "全国大学生机械创新设计大赛湖北赛区一等奖",
     recipients: "Zhiyuan Chen (team lead), Gangping Chen, Wei Zheng, Bangxin Wang, Xiaopeng Li / 陈志远（队长）、陈港平、郑伟、王邦昕、李小鹏",
     date: "2018-05",
-    awardingOrganization: "Wuhan University of Science and Technology",
+    awardingOrganization: "National College Student Mechanical Innovation Design Competition Hubei Regional Organizing Committee",
   },
   {
     titleEn: "Mathematical Contest in Modeling, Meritorious Winner",
@@ -657,7 +657,7 @@ const competitionAwardRecords: Award[] = [
     titleZh: "湖北省大学生机械创新设计大赛优秀奖",
     recipients: "Yi Cao, Jinjiang Xu, Xiaobo Liu, Jianhua Yin, Chaoyi He, Zhiyuan Chen, Dongfang Pan / 曹毅、徐锦江、刘晓波、尹建华、何超逸、陈志远、潘东芳",
     date: "2016-12",
-    awardingOrganization: "Wuhan University of Science and Technology",
+    awardingOrganization: "Hubei Provincial Committee of the Communist Youth LeagueHubei Association for Science and Technology",
   },
 ];
 
@@ -737,7 +737,7 @@ const honorRecords: Award[] = [
     titleZh: "湖北省大学生自强之星",
     recipients: "Zhiyuan Chen / 陈志远",
     date: "2019-09",
-    awardingOrganization: "Hubei Provincial Committee of the Communist Youth League and Hubei Students' Federation Secretariat",
+    awardingOrganization: "Hubei Provincial Committee of the Communist Youth LeagueHubei Students' Federation Secretariat",
   },
   {
     titleEn: "Top Ten Charming Students",
@@ -748,7 +748,7 @@ const honorRecords: Award[] = [
   },
   {
     titleEn: "Outstanding 3D Association President",
-    titleZh: "武汉科技大学校级‘3D协会’优秀会长",
+    titleZh: "担任武汉科技大学3D协会会长，并获评校级优秀会长",
     recipients: "Zhiyuan Chen / 陈志远",
     date: "2017-05",
     awardingOrganization: "Wuhan University of Science and Technology",

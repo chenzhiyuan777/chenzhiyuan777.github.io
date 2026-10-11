@@ -11,7 +11,7 @@ interface Props {
 
 const { text, size = 20, emphasize = false } = Astro.props;
 const parts = text.split(
-  /(IROS 2026 Workshop Organizers|Chinese Society for Industrial and Applied Mathematics|Chinese Mathematical Society|Hubei Provincial Committee of the Communist Youth League|Hubei Students' Federation Secretariat|Ministry of Education Higher Education Mechanics Teaching Guidance Committee|Ministry of Education, PRC|Communist Youth League Committee of Wuhan University of Science and Technology|Tsinghua University Graduate School and Tsinghua University Tianjin Institute for Advanced Equipment|Tsinghua University Graduate Party Affairs Office|Tsinghua University Guoqiang Research Institute|Wuhan University of Science and Technology|Samsung Electronics China|Techtronic Industries \(TTI\)|Tsinghua University|Huawei|Xiaomi|IATEFL|COMAP|TTI)/g,
+  /(IROS 2026 Workshop Organizers|National College Student Mechanical Innovation Design Competition Hubei Regional Organizing Committee|Chinese Society for Industrial and Applied Mathematics|Chinese Mathematical Society|Hubei Provincial Committee of the Communist Youth League|Hubei Association for Science and Technology|Hubei Students' Federation Secretariat|Ministry of Education Higher Education Mechanics Teaching Guidance Committee|Ministry of Education, PRC|Communist Youth League Committee of Wuhan University of Science and Technology|Tsinghua University Graduate School and Tsinghua University Tianjin Institute for Advanced Equipment|Tsinghua University Graduate Party Affairs Office|Tsinghua University Guoqiang Research Institute|Wuhan University of Science and Technology|Samsung Electronics China|Techtronic Industries \(TTI\)|Tsinghua University|Huawei|Xiaomi|IATEFL|COMAP|TTI)/g,
 );
 const organizations = new Set([
   "Xiaomi",
@@ -28,12 +28,14 @@ const organizations = new Set([
   "Ministry of Education, PRC",
   "Ministry of Education Higher Education Mechanics Teaching Guidance Committee",
   "Hubei Provincial Committee of the Communist Youth League",
+  "Hubei Association for Science and Technology",
   "Hubei Students' Federation Secretariat",
   "COMAP",
   "IATEFL",
   "Chinese Mathematical Society",
   "Chinese Society for Industrial and Applied Mathematics",
   "IROS 2026 Workshop Organizers",
+  "National College Student Mechanical Innovation Design Competition Hubei Regional Organizing Committee",
 ]);
 ---
 

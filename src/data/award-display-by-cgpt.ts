@@ -62,10 +62,18 @@ export const competitionDisplayRecords: AwardDisplayRecord[] = [...competitionAw
   .map(toDisplayRecord);
 
 // by cgpt: The supplied Three-Star Volunteer certificate is dated May 2024.
-export const honorDisplayRecords: AwardDisplayRecord[] = selectedHonors
+const sortedHonorDisplayRecords: AwardDisplayRecord[] = selectedHonors
   .filter((award) => !award.titleZh.includes("第777期"))
   .map((award) => award.titleZh === "清华大学三星级志愿者"
     ? { ...award, date: "2024-05" }
     : { ...award })
   .sort(sortByLatestDate)
   .map(toDisplayRecord);
+
+// by cgpt: Preserve the requested presentation order for the eighth and ninth honors.
+[sortedHonorDisplayRecords[7], sortedHonorDisplayRecords[8]] = [
+  sortedHonorDisplayRecords[8],
+  sortedHonorDisplayRecords[7],
+];
+
+export const honorDisplayRecords = sortedHonorDisplayRecords;
