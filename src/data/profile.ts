@@ -74,7 +74,8 @@ export const news: NewsItem[] = [
   },
   {
     date: "2025",
-    text: "Joined Xiaomi after completing my doctoral studies.",
+    // by cgpt: Use Xiaomi's official program name while retaining its organization logo.
+    text: "Joined Xiaomi through its Future Star Program.",
   },
   {
     date: "2025",
