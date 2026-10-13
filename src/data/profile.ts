@@ -335,10 +335,11 @@ export const experiences = [
     period: "2022-2025",
     organization: "Tsinghua University",
     role: "Ph.D. in Mechanical Engineering",
+    // by cgpt: State the approved blind-review result before the doctoral research description.
     description:
-      "Research on robot perception and closed-loop manipulation, with an emphasis on vision-guided precision assembly, image-based visual servoing, collision-aware motion planning, and real-world robotic system integration.",
+      "Doctoral dissertation: rated A by all three reviewers in the blind review. Research on robot perception and closed-loop manipulation, with an emphasis on vision-guided precision assembly, image-based visual servoing, collision-aware motion planning, and real-world robotic system integration.",
     descriptionHtml:
-      "Research on <strong>robot perception and closed-loop manipulation</strong>, with an emphasis on vision-guided precision assembly, image-based visual servoing, collision-aware motion planning, and real-world robotic system integration.",
+      "Doctoral dissertation: rated <strong>A by all three reviewers</strong> in the blind review. Research on <strong>robot perception and closed-loop manipulation</strong>, with an emphasis on vision-guided precision assembly, image-based visual servoing, collision-aware motion planning, and real-world robotic system integration.",
   },
   {
     period: "2023",
