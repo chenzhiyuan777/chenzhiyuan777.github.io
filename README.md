@@ -52,8 +52,8 @@ label strip.
 <!-- by cgpt: Keep recent under-review work adjacent to the latest public projects. -->
 The featured publication order is PACE, ForeTac, Finder, UCAG-P, ALTER, TIM,
 AEI, JCEM, NAMRC, and CIN.
-<!-- by cgpt: Select a source MP4 for PACE and retain seven approved WebP previews. -->
-PACE uses its reviewed MP4; seven other previews use lossless animated WebP files.
+<!-- by cgpt: Restore the user-selected lightweight PACE WebP; keep the other previews. -->
+PACE and seven other previews use their reviewed lossless animated WebP files.
 Finder and CIN use static PNG figures.
 <!-- by cgpt: Keep the other seven original GIF reference timelines unchanged. -->
 The seven other WebP previews retain every displayed pixel, the dimensions, playback speed,
@@ -63,28 +63,25 @@ smaller `_lite` candidates, generation scripts and full pixel proofs remain in t
 external local media workspace for comparison. TIM keeps its
 View2 and visual-feedback inset, without
 burned-in stage or speed labels; its blue page label is `IEEE TIM 2025`.
-<!-- by cgpt: Preserve original video bytes and the sharp figure without a large animated image. -->
-PACE selects `public/videos/pace/pace-overview-4x-master-hd-1280x720-by-cgpt.mp4`
-through `video` in `profile.ts`, with the original-Figure-1 HD cover in `image`
-and `videoFigureSeconds: 4`. The MP4 is a byte-identical copy of the reviewed
-1280×720 montage: 30 fps, 635 frames, 21.167 seconds, 2.41 MB, already fast-start.
-It adds no encoding loss; its existing H.264 compression is not pixel-lossless.
-The 0.31 MB figure comes directly from the original 4076×2508 image. Together
-they require 2.72 MB, about 91% less than the rejected 30.56 MB WebP/cover pair.
-The original figure overlays the video for the first four seconds of each loop,
-using media time rather than a timer. No player controls are displayed.
-<!-- by cgpt: Loading and playback share the scheduling rules in AGENTS.md. -->
-`src/scripts/publication-video-by-cgpt.ts` uses the shared media scheduler:
-visible and nearby entries receive download priority, while muted playback
-starts only when the figure is actually visible and its own cover is ready.
-Playback pauses offscreen or when the document is hidden.
-Failed loading or initially blocked autoplay retains the figure. Without JavaScript,
-the original MP4 plays directly with its native figure introduction.
+<!-- by cgpt: Prefer the existing lightweight animation and explicitly record its resolution. -->
+PACE selects `public/videos/pace/pace_overview_4x_refine_clear-lossless-by-cgpt.webp`
+through `image` in `profile.ts`: the unchanged 480×270, 10 fps, 21.2-second
+preview, 3.43 MB, with the complete display timeline of its approved old GIF.
+Its first four seconds remain the static introduction encoded in that animation.
+The 1280×720 original-Figure-1 HD cover is selected through `imagePoster`
+and stays visible during loading; it is an independent 0.31 MB figure rather
+than a pixel-identical first frame of the 480px animation. The selected pair is
+3.74 MB. This restores the older preview resolution, including its smaller text;
+it does not claim the same clarity or frame rate as the former 720p MP4.
+The shared scheduler prepares the animation and switches it only when loaded
+and actually visible. No video playback permission or H.264 decoding is required.
+Without JavaScript, the original WebP is rendered directly.
 <!-- by cgpt: Publish only selected PACE media; archive every earlier candidate locally. -->
-The earlier 480px WebP/cover pair and rejected 1280px animated WebP remain
-unchanged in the external local PACE material library. Their former website
-copies are archived under `outputs/retained-site-copies-20261010-by-cgpt/`
-in that library, outside the Git repository and deployment output.
+The old 480px cover, former 720p MP4 and rejected 1280px animated WebP remain
+unchanged in the external local PACE material library. Historical website
+copies are archived under the paper's `outputs/` folders, outside the Git
+repository and deployment output. Only the selected animation and HD cover
+remain in `public/videos/pace/`.
 Generation scripts, original sources and pixel proofs stay in the local PACE
 material folder. No previous file is overwritten.
 <!-- by cgpt: All Video entries now open author-provided YouTube destinations. -->
@@ -94,8 +91,9 @@ directly. NAMRC's earlier two-video chooser is no longer part of the page.
 Paper links use the verified publisher DOIs. Resource links
 appear directly below the authors, following the live reference homepage.
 <!-- by cgpt: Cover-first display and bounded prediction apply to every new entry. -->
-Each WebP entry sets `imagePoster` to a lossless full-resolution first-frame
-cover. `src/scripts/publication-motion-by-cgpt.ts` uses the shared scheduler to
+WebP entries set `imagePoster` to their reviewed covers; the other seven use
+their lossless first frames, while PACE retains its independent HD figure.
+`src/scripts/publication-motion-by-cgpt.ts` uses the shared scheduler to
 prepare visible entries, the 100px margin, and the next two dynamic entries in
 the reading direction. It replaces the cover only after the animation is ready
 and actually visible.
