@@ -63,11 +63,14 @@ smaller `_lite` candidates, generation scripts and full pixel proofs remain in t
 external local media workspace for comparison. TIM keeps its
 View2 and visual-feedback inset, without
 burned-in stage or speed labels; its blue page label is `IEEE TIM 2025`.
-<!-- by cgpt: Prefer the existing lightweight animation and explicitly record its resolution. -->
-PACE selects `public/videos/pace/pace_overview_4x_refine_clear-lossless-by-cgpt.webp`
-through `image` in `profile.ts`: the unchanged 480×270, 10 fps, 21.2-second
-preview, 3.43 MB, with the complete display timeline of its approved old GIF.
-Its first four seconds remain the static introduction encoded in that animation.
+<!-- by cgpt: Shorten only the introduction without re-encoding any frame. -->
+PACE selects `public/videos/pace/pace-overview-4x-intro-2s-lossless-by-cgpt.webp`
+through `image` in `profile.ts`: a new 480×270, 19.2-second preview, 3.43 MB.
+Its introductory figure now lasts two seconds instead of four. Only the first
+40 WebP frame-duration fields change from 100ms to 50ms; all encoded image data,
+all 212 decoded RGBA frames and the following 17.2 seconds of motion remain
+unchanged. The motion portion stays at 10 fps and loops infinitely. This is a
+deliberately retimed version of the old GIF reference, not an unchanged timeline.
 The 1280×720 original-Figure-1 HD cover is selected through `imagePoster`
 and stays visible during loading; it is an independent 0.31 MB figure rather
 than a pixel-identical first frame of the 480px animation. The selected pair is
@@ -75,9 +78,10 @@ than a pixel-identical first frame of the 480px animation. The selected pair is
 it does not claim the same clarity or frame rate as the former 720p MP4.
 The shared scheduler prepares the animation and switches it only when loaded
 and actually visible. No video playback permission or H.264 decoding is required.
-Without JavaScript, the original WebP is rendered directly.
+Without JavaScript, the selected WebP is rendered directly.
 <!-- by cgpt: Publish only selected PACE media; archive every earlier candidate locally. -->
-The old 480px cover, former 720p MP4 and rejected 1280px animated WebP remain
+The old four-second-introduction WebP, its 480px cover, former 720p MP4 and
+rejected 1280px animated WebP remain
 unchanged in the external local PACE material library. Historical website
 copies are archived under the paper's `outputs/` folders, outside the Git
 repository and deployment output. Only the selected animation and HD cover

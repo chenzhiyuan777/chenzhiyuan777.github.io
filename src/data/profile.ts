@@ -96,8 +96,8 @@ export const publications: Publication[] = [
     venue: "CoRL 2026 (Oral)",
     year: "2026",
     venueBadge: "Top Conference",
-    // by cgpt: Restore the approved 480x270 lightweight animation; retain the HD loading cover.
-    image: "/videos/pace/pace_overview_4x_refine_clear-lossless-by-cgpt.webp",
+    // by cgpt: Use the new 2-second introduction; original pixels and motion speed remain intact.
+    image: "/videos/pace/pace-overview-4x-intro-2s-lossless-by-cgpt.webp",
     imagePoster: "/videos/pace/pace-overview-4x-figure-source-hd-1280x720-by-cgpt-poster.webp",
     imageAlt: "PACE temporal roles and representative insertion tasks animation",
     mediaAspect: "wide",
