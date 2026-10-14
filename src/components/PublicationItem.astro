@@ -156,8 +156,10 @@ const mediaLabelPosition = publication.mediaLabelPosition;
                 {link.label}
               </a>
             ) : (
+              // by cgpt: Unavailable papers show the gray resource label without a status suffix.
               <span class="publication-link-pending" aria-disabled="true">
-                {link.label} <small>({link.note})</small>
+                {link.label}
+                {link.label !== "Paper" && link.note && <small>({link.note})</small>}
               </span>
             )
           )}

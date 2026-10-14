@@ -670,36 +670,43 @@ h3 {
 
 .research-project-title {
   display: flex;
-  align-items: center;
+  /* by cgpt: Match the reference's upper-left badge even when the title wraps. */
+  align-items: flex-start;
   gap: 10px;
 }
 
 .research-project-title h3 {
-  display: flex;
+  min-width: 0;
   margin: 0;
-  align-items: center;
-  gap: 7px;
   color: var(--accent);
   font-size: 1.05rem;
 }
 
 .research-project-title h3 img {
+  /* by cgpt: Keep the organization mark inline with the first title line. */
+  display: inline-block;
   width: 20px;
   height: 20px;
+  margin-right: 7px;
+  vertical-align: middle;
   object-fit: contain;
 }
 
 .project-badge {
   flex: 0 0 auto;
-  padding: 1px 6px;
+  margin-top: -2px;
+  padding: 4px 8px;
   color: #ffffff;
   background: var(--signal);
-  font-size: 0.72rem;
-  line-height: 1.4;
+  font-size: 14px;
+  line-height: 1;
 }
 
+/* by cgpt: Keep the initial text-only project introductions small and readable. */
 .research-project > p {
   margin: 10px 0 0;
+  color: var(--muted);
+  font-size: 0.9rem;
 }
 
 .timeline-role {
@@ -910,11 +917,6 @@ h3 {
 
 .site-footer a {
   color: inherit;
-}
-
-.template-attribution {
-  width: 100%;
-  font-size: 0.8rem;
 }
 
 .eyebrow {

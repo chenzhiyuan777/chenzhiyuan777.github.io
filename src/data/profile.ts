@@ -1,7 +1,7 @@
 // by cgpt: Resource entries link directly to videos/playlists or show availability.
 export type PublicationLink = {
   label: "Project" | "Paper" | "Video" | "Code" | "Report";
-} & ({ href: string; note?: never } | { href?: never; note: string });
+} & ({ href: string; note?: never } | { href?: never; note?: string });
 
 export type Publication = {
   id?: string;
@@ -115,15 +115,16 @@ export const publications: Publication[] = [
       },
       {
         label: "Paper",
-        note: "Coming soon",
+        href: "https://arxiv.org/abs/2610.16308",
       },
     ],
   },
   {
-    // by cgpt: RAL submission; show the known first author and keep pending co-authors explicit.
+    // by cgpt: RAL submission; keep the public author line concise and identify the corresponding author.
     title: "ForeTac: Predictive Contact Guidance for Generative Robot Policies",
-    authors: "Zhiyuan Chen, co-authors pending",
-    authorsHtml: "<strong>Zhiyuan Chen</strong>, co-authors pending",
+    authors: "Zhiyuan Chen, et al.",
+    authorsHtml: "<strong>Zhiyuan Chen</strong><sup>*</sup>, et al.",
+    correspondingAuthorNote: "* Corresponding Author",
     venue: "IEEE Robotics and Automation Letters (Under Review)",
     year: "2026",
     // by cgpt: Preserve the requested source slices: 0–3 s followed by 12–25 s.
@@ -139,7 +140,7 @@ export const publications: Publication[] = [
     links: [
       // by cgpt: Project URL extracted from the ForeTac manuscript PDF.
       { label: "Project", href: "https://foretac.github.io/" },
-      { label: "Paper", note: "Not public" },
+      { label: "Paper" },
     ],
   },
   {
@@ -165,15 +166,11 @@ export const publications: Publication[] = [
   },
   {
     // by cgpt: Merge the AAAI submission and Xiaomi report as one UCAG-P work.
-    // by cgpt: Show the shorter AAAI author list; preserve the 21-author report citation below.
+    // by cgpt: Keep the anonymous review-stage author line concise.
     title:
       "One Policy, Many Embodiments: Unified Camera-Centric Action Geometry Pre-training for Heterogeneous Embodied Manipulation",
-    authors:
-      "Shaoqing Xu, Fang Li, Guozhi Zhan, Zhixiang Duan, Yuhan Wang, Longlong Wang, Longmei Jiang, Zhiyuan Chen, Yangwei You, Zhiying Du, Zhi-xin Yang",
-    authorsHtml:
-      "Shaoqing Xu, Fang Li, Guozhi Zhan, Zhixiang Duan, Yuhan Wang, Longlong Wang, Longmei Jiang, <strong>Zhiyuan Chen</strong>, Yangwei You, Zhiying Du, Zhi-xin Yang",
-    fullReportAuthors:
-      "Shaoqing Xu, Fang Li, Guozhi Zhan, Zhixiang Duan, Yuhan Wang, Yuechen Luo, Shengyin Jiang, Hanbing Li, Zhiying Du, Longlong Wang, Longmei Jiang, Weixiang Liang, Ying Gong, Yong Pan, Ziping Zhao, Zhiyuan Chen, Yangwei You, Kun Ma, Qinyuan Liu, Hangjun Ye, Zhi-xin Yang",
+    authors: "Co-author",
+    authorsHtml: "Co-author",
     venue: "AAAI 2027 (Under Review)",
     year: "2026",
     versionNote: "2026 · Xiaomi Technical Report (public version)",
@@ -188,7 +185,7 @@ export const publications: Publication[] = [
       "A camera-centric action representation unifies robot and human demonstrations to train a shared manipulation policy across heterogeneous embodiments.",
     links: [
       { label: "Project", href: "https://public-bots.github.io/UCAG-P/" },
-      { label: "Paper", note: "Not public" },
+      { label: "Paper" },
       { label: "Report", href: "https://arxiv.org/abs/2608.26058" },
     ],
   },
@@ -212,7 +209,7 @@ export const publications: Publication[] = [
     links: [
       // by cgpt: Project URL from page 1 of 个人主页/alter/mobicom27-paper415.pdf.
       { label: "Project", href: "https://alter-vla.github.io/ALTER-vla/" },
-      { label: "Paper", note: "Not public" },
+      { label: "Paper" },
     ],
   },
   {
@@ -369,13 +366,46 @@ export const experiences = [
   },
 ];
 
+// by cgpt: Describe all five requested Xiaomi projects without adding project media.
 export const researchProjects = [
   {
-    type: "Research",
+    type: "R&D",
     organization: "Xiaomi Robotics",
-    title: "Reliable robot learning and physical interaction",
+    title: "From Reactive to Predictive Tactile Fine Manipulation",
     description:
-      "Current research on tactile-conditioned insertion policies, contact-aware manipulation, and robust robot learning.",
+      "Developing tactile policies for fine-grained robotic manipulation, from reactive feedback to predictive, contact-aware control.",
+    logo: "/images/xiaomi.png",
+  },
+  {
+    type: "Competition",
+    organization: "Xiaomi Robotics",
+    title: "WorldArena 2.0 Challenge",
+    description:
+      "Designed the ViTacX model and led the team to first place in the IROS 2026 WorldArena 2.0 Real Robot Track (Track 3).",
+    logo: "/images/xiaomi.png",
+  },
+  {
+    type: "R&D",
+    organization: "Xiaomi Robotics",
+    title: "Vision-Language-Action Models and Infrastructure",
+    description:
+      "Building vision-language-action models and supporting infrastructure for general-purpose robotic manipulation.",
+    logo: "/images/xiaomi.png",
+  },
+  {
+    type: "R&D",
+    organization: "Xiaomi Robotics",
+    title: "EgoData Processing Pipeline",
+    description:
+      "Creating data processing and curation pipelines for EgoData to support scalable robot learning.",
+    logo: "/images/xiaomi.png",
+  },
+  {
+    type: "Patent",
+    organization: "Xiaomi Robotics",
+    title: "Vision-Guided Bin-Picking",
+    description:
+      "Developed and deployed vision-guided bin-picking on real robots, with related work covered by a granted patent.",
     logo: "/images/xiaomi.png",
   },
 ];
