@@ -52,42 +52,42 @@ label strip.
 <!-- by cgpt: Keep recent under-review work adjacent to the latest public projects. -->
 The featured publication order is PACE, ForeTac, Finder, UCAG-P, ALTER, TIM,
 AEI, JCEM, NAMRC, and CIN.
-<!-- by cgpt: Restore the user-selected lightweight PACE WebP; keep the other previews. -->
-PACE and seven other previews use their reviewed lossless animated WebP files.
-Finder and CIN use static PNG figures.
-<!-- by cgpt: Keep the other seven original GIF reference timelines unchanged. -->
-The seven other WebP previews retain every displayed pixel, the dimensions, playback speed,
-and complete timeline of the approved GIFs. Repeated identical frames may share
-one encoded frame with their original combined display duration. The GIF originals,
-smaller `_lite` candidates, generation scripts and full pixel proofs remain in the
-external local media workspace for comparison. TIM keeps its
-View2 and visual-feedback inset, without
-burned-in stage or speed labels; its blue page label is `IEEE TIM 2025`.
-<!-- by cgpt: Shorten only the introduction without re-encoding any frame. -->
-PACE selects `public/videos/pace/pace-overview-4x-intro-2s-lossless-by-cgpt.webp`
-through `image` in `profile.ts`: a new 480×270, 19.2-second preview, 3.43 MB.
-Its introductory figure now lasts two seconds instead of four. Only the first
-40 WebP frame-duration fields change from 100ms to 50ms; all encoded image data,
-all 212 decoded RGBA frames and the following 17.2 seconds of motion remain
-unchanged. The motion portion stays at 10 fps and loops infinitely. This is a
-deliberately retimed version of the old GIF reference, not an unchanged timeline.
-The 1280×720 original-Figure-1 HD cover is selected through `imagePoster`
-and stays visible during loading; it is an independent 0.31 MB figure rather
-than a pixel-identical first frame of the 480px animation. The selected pair is
-3.74 MB. This restores the older preview resolution, including its smaller text;
-it does not claim the same clarity or frame rate as the former 720p MP4.
-The shared scheduler prepares the animation and switches it only when loaded
-and actually visible. No video playback permission or H.264 decoding is required.
-Without JavaScript, the selected WebP is rendered directly.
-<!-- by cgpt: Publish only selected PACE media; archive every earlier candidate locally. -->
-The old four-second-introduction WebP, its 480px cover, former 720p MP4 and
-rejected 1280px animated WebP remain
-unchanged in the external local PACE material library. Historical website
-copies are archived under the paper's `outputs/` folders, outside the Git
-repository and deployment output. Only the selected animation and HD cover
-remain in `public/videos/pace/`.
-Generation scripts, original sources and pixel proofs stay in the local PACE
-material folder. No previous file is overwritten.
+<!-- by cgpt: Restore clear source video with bounded recovery and the existing media queue. -->
+PACE uses its reviewed 1280×720 MP4; the other seven previews retain their
+lossless animated WebP files. Finder and CIN remain static figures.
+The seven WebP previews preserve the approved GIF pixels, dimensions, speed,
+complete timeline and loop; their originals and proofs remain in the local library.
+
+PACE selects `public/videos/pace/pace-overview-4x-master-hd-1280x720-by-cgpt.mp4`
+through `video`: 2,413,312 bytes, H.264 High/yuv420p, 30 fps, 21.166667 seconds.
+The published file is byte-identical to the reviewed master and already has
+faststart; this means no **additional** transcoding loss, not lossless H.264.
+The independent 1280×720 original-Figure-1 cover is selected through `image`
+(308,670 bytes). The selected pair is 2.72 MB, about 1.02 MB smaller than the
+previous lightweight WebP plus the same cover.
+
+`videoFigureSeconds: 2` and `videoSourceFigureSeconds: 4` shorten the introduction
+at runtime: every loop seeks from source time 2 to 4 seconds, without changing
+the source file or motion speed. The cover stays until an action frame is
+presented; buffering/seeking can add wall-clock time. Without JavaScript the
+original MP4 has native controls and keeps its original four-second introduction.
+
+Network/preparation failures retry at most twice (750/1500ms) through
+`retryPublicationMediaByCgpt` and the same shared scheduler. A visible video with
+data but no progress for ten seconds triggers recovery; hidden/offscreen pauses
+do not count. Autoplay rejection exposes **Play video**; exhausted recovery
+exposes **Retry video**. Clicking an already-buffered video calls play within
+the user gesture. No failed-state recovery bypasses queue slots, and no 30 MB
+animation is downloaded by default. The 45-second preparation guard does not
+delay normal playback until the whole file is buffered.
+These measures reduce known failure paths; they do not guarantee every browser,
+network or device can play the source.
+
+Only the selected MP4 and HD cover remain in `public/videos/pace/`. Both
+two-second and four-second lightweight WebP versions, the rejected HD WebP,
+all originals, generation scripts, proofs and historical website copies remain
+unchanged in the external local PACE library.
+
 <!-- by cgpt: All Video entries now open author-provided YouTube destinations. -->
 TIM and AEI Video links open the author-provided YouTube videos. JCEM and NAMRC
 each have a single Video link that opens their respective YouTube playlist
@@ -95,8 +95,8 @@ directly. NAMRC's earlier two-video chooser is no longer part of the page.
 Paper links use the verified publisher DOIs. Resource links
 appear directly below the authors, following the live reference homepage.
 <!-- by cgpt: Cover-first display and bounded prediction apply to every new entry. -->
-WebP entries set `imagePoster` to their reviewed covers; the other seven use
-their lossless first frames, while PACE retains its independent HD figure.
+The seven WebP entries set `imagePoster` to their lossless first-frame covers.
+PACE uses `image` for its independent HD figure cover.
 `src/scripts/publication-motion-by-cgpt.ts` uses the shared scheduler to
 prepare visible entries, the 100px margin, and the next two dynamic entries in
 the reading direction. It replaces the cover only after the animation is ready

@@ -31,6 +31,7 @@ const mediaLabelPosition = publication.mediaLabelPosition;
             data-publication-video-by-cgpt
             data-video-src={publication.video}
             data-figure-seconds={publication.videoFigureSeconds ?? 0}
+            data-source-figure-seconds={publication.videoSourceFigureSeconds ?? publication.videoFigureSeconds ?? 0}
             poster={publication.image}
             width={publication.mediaAspect === "wide" ? 1280 : 720}
             height={publication.mediaAspect === "wide" ? 720 : 450}
@@ -54,6 +55,9 @@ const mediaLabelPosition = publication.mediaLabelPosition;
               loading="lazy"
             />
           )}
+          {/* by cgpt: A failed autoplay/load has an accessible recovery action, not a dead cover. */}
+          <button type="button" class="publication-video-recovery-by-cgpt"
+            data-video-recovery-by-cgpt hidden aria-label="Play video">Play video</button>
           <noscript>
             {/* by cgpt: Without JS, play the original MP4 without a persistent overlay. */}
             <style is:inline>
@@ -70,6 +74,7 @@ const mediaLabelPosition = publication.mediaLabelPosition;
               muted
               loop
               playsinline
+              controls
               aria-label={publication.imageAlt ?? publication.title}
             />
           </noscript>
@@ -169,3 +174,25 @@ const mediaLabelPosition = publication.mediaLabelPosition;
   // by cgpt: Native video playback and WebP preloading use the same bounded queue.
   import "../scripts/publication-video-by-cgpt";
 </script>
+
+<style>
+  /* by cgpt: Only failures expose this action; keep the existing blue corner label clear. */
+  .publication-video-recovery-by-cgpt {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    border: 1px solid #fff;
+    border-radius: 5px;
+    padding: 6px 12px;
+    color: #fff;
+    background: #194c87;
+    font: inherit;
+    font-size: 13px;
+    white-space: nowrap;
+    cursor: pointer;
+  }
+  .publication-video-recovery-by-cgpt[hidden] { display: none; }
+  .publication-video-recovery-by-cgpt:focus-visible { outline: 3px solid #e5a020; }
+</style>

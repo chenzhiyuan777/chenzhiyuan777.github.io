@@ -140,8 +140,9 @@ function start(card: CardByCgpt, reason: "visible" | "near" | "background") {
   const preparation = cover.then(() => {
     if (attempt !== card.attempt) return;
     const rect = card.frame.getBoundingClientRect();
-    if (reason !== "background" && (rect.bottom <= -100 || rect.top >= window.innerHeight + 100)) {
-      // A jump during cover loading releases this slot before heavy bytes start.
+    if (document.hidden || (reason !== "background" &&
+        (rect.bottom <= -100 || rect.top >= window.innerHeight + 100))) {
+      // by cgpt: A hidden page or jump during cover loading releases the slot before heavy bytes start.
       card.attempt += 1;
       card.state = "pending";
       card.frame.dataset.mediaState = "pending";
@@ -249,6 +250,19 @@ export function registerPublicationMediaByCgpt(controller: PublicationMediaContr
   card.controller = controller;
   card.frame.dataset.mediaState = "pending";
   requestUpdate();
+}
+
+// by cgpt: Failed videos re-enter the same cover/viewport/slot queue, never a second loader.
+export function retryPublicationMediaByCgpt(element: HTMLElement) {
+  const frame = element.closest<HTMLElement>(".publication-media");
+  const card = cards.find((item) => item.frame === frame);
+  if (!card?.controller || card.state === "loading") return false;
+  card.attempt += 1;
+  card.state = "pending";
+  card.preparingMedia = false;
+  card.frame.dataset.mediaState = "pending";
+  requestUpdate();
+  return true;
 }
 
 window.addEventListener("scroll", () => {

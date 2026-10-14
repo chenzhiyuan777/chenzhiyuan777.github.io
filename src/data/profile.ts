@@ -24,6 +24,8 @@ export type Publication = {
   video?: string;
   // by cgpt: Keep the original figure visible during each video's introduction.
   videoFigureSeconds?: number;
+  // by cgpt: Skip excess source-introduction time without transcoding the reviewed MP4.
+  videoSourceFigureSeconds?: number;
   imageAlt?: string;
   mediaAspect?: "wide";
   // by cgpt: Use false when an overlaid label would obscure a scientific figure.
@@ -96,9 +98,11 @@ export const publications: Publication[] = [
     venue: "CoRL 2026 (Oral)",
     year: "2026",
     venueBadge: "Top Conference",
-    // by cgpt: Use the new 2-second introduction; original pixels and motion speed remain intact.
-    image: "/videos/pace/pace-overview-4x-intro-2s-lossless-by-cgpt.webp",
-    imagePoster: "/videos/pace/pace-overview-4x-figure-source-hd-1280x720-by-cgpt-poster.webp",
+    // by cgpt: Restore the reviewed HD MP4, with a sharp cover and two-second introduction.
+    video: "/videos/pace/pace-overview-4x-master-hd-1280x720-by-cgpt.mp4",
+    image: "/videos/pace/pace-overview-4x-figure-source-hd-1280x720-by-cgpt-poster.webp",
+    videoFigureSeconds: 2,
+    videoSourceFigureSeconds: 4,
     imageAlt: "PACE temporal roles and representative insertion tasks animation",
     mediaAspect: "wide",
     mediaLabel: "CoRL 2026 (Oral)",
