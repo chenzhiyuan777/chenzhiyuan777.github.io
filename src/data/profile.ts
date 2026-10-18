@@ -61,8 +61,9 @@ export const news: NewsItem[] = [
   },
   {
     date: "2026",
-    text: "PACE has been accepted for an oral presentation at CoRL 2026.",
-    textHtml: "PACE has been accepted for an <strong>oral</strong> presentation at CoRL 2026.",
+    // by cgpt: Keep the user-requested Top 1% label consistent with the publication.
+    text: "PACE has been accepted for an oral presentation (Top 1%) at CoRL 2026.",
+    textHtml: "PACE has been accepted for an <strong>oral presentation (Top 1%)</strong> at CoRL 2026.",
     href: "https://pace-insertion.github.io/",
     jumpHref: "#publication-pace",
     jumpLabel: "View the PACE publication",
@@ -95,7 +96,8 @@ export const publications: Publication[] = [
     authorsHtml:
       "<strong>Zhiyuan Chen</strong><sup>*</sup>, Shixiong Xu, Shuai Chen, Yangwei You",
     correspondingAuthorNote: "* Corresponding Author",
-    venue: "CoRL 2026 (Oral)",
+    // by cgpt: Include the requested Top 1% label in the venue and media overlay.
+    venue: "CoRL 2026 (Oral · Top 1%)",
     year: "2026",
     venueBadge: "Top Conference",
     // by cgpt: Restore the reviewed HD MP4, with a sharp cover and two-second introduction.
@@ -105,7 +107,7 @@ export const publications: Publication[] = [
     videoSourceFigureSeconds: 4,
     imageAlt: "PACE temporal roles and representative insertion tasks animation",
     mediaAspect: "wide",
-    mediaLabel: "CoRL 2026 (Oral)",
+    mediaLabel: "CoRL 2026 · Oral · Top 1%",
     summary:
       "A temporal-role tactile conditioning framework that separates persistent contact states, abrupt contact events, and future contact consequences for contact-rich insertion.",
     links: [
