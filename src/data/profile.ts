@@ -50,10 +50,10 @@ type NewsItem = {
 export const news: NewsItem[] = [
   {
     date: "2026",
-    // by cgpt: Spell out the real robot track while retaining its official number.
-    text: "ViTacX, led by Zhiyuan Chen, won 1st place in the Real Robot Track (Track 3) of the IROS 2026 · WorldArena 2.0 Challenge.",
+    // by cgpt: Emphasize the model identity and competition result in one concise News line.
+    text: "ViTacX, a visuotactile world-action model, won 1st place in the IROS 2026 · WorldArena 2.0 Real Robot Track (Track 3).",
     textHtml:
-      "<strong>ViTacX</strong>, led by Zhiyuan Chen, won <strong>1st place</strong> in the <strong>Real Robot Track</strong> (Track 3) of the <strong>IROS 2026</strong> · <strong>WorldArena 2.0</strong> Challenge.",
+      "<strong>ViTacX</strong>, a <strong>visuotactile world-action model</strong>, won <strong>1st place</strong> in the <strong>IROS 2026</strong> · <strong>WorldArena 2.0</strong> Real Robot Track (Track 3).",
     icon: "trophy",
     href: "https://huggingface.co/spaces/WorldArena/WorldArena2.0",
     jumpHref: "#competition-worldarena-2026",
@@ -61,9 +61,19 @@ export const news: NewsItem[] = [
   },
   {
     date: "2026",
+    // by cgpt: Announce the public preprint and the current RA-L review status without implying acceptance.
+    text: "ForeTac is now available on arXiv and under review at IEEE RA-L.",
+    textHtml:
+      "<strong>ForeTac</strong> is now available on <strong>arXiv</strong> and under review at <strong>IEEE RA-L</strong>.",
+    href: "https://arxiv.org/abs/2610.18118",
+    jumpHref: "#publication-foretac",
+    jumpLabel: "View the ForeTac publication",
+  },
+  {
+    date: "2026",
     // by cgpt: Keep the user-requested Top 1% label consistent with the publication.
     text: "PACE has been accepted for an oral presentation (Top 1%) at CoRL 2026.",
-    textHtml: "PACE has been accepted for an <strong>oral presentation (Top 1%)</strong> at CoRL 2026.",
+    textHtml: "<strong>PACE</strong> has been accepted for an <strong>oral presentation (Top 1%)</strong> at CoRL 2026.",
     href: "https://pace-insertion.github.io/",
     jumpHref: "#publication-pace",
     jumpLabel: "View the PACE publication",
@@ -123,6 +133,7 @@ export const publications: Publication[] = [
   },
   {
     // by cgpt: RAL submission; keep the public author line concise and identify the corresponding author.
+    id: "publication-foretac",
     title: "ForeTac: Predictive Contact Guidance for Generative Robot Policies",
     authors: "Zhiyuan Chen, et al.",
     authorsHtml: "<strong>Zhiyuan Chen</strong><sup>*</sup>, et al.",
@@ -142,7 +153,7 @@ export const publications: Publication[] = [
     links: [
       // by cgpt: Project URL extracted from the ForeTac manuscript PDF.
       { label: "Project", href: "https://foretac.github.io/" },
-      { label: "Paper" },
+      { label: "Paper", href: "https://arxiv.org/abs/2610.18118" },
     ],
   },
   {
@@ -339,32 +350,34 @@ export const experiences = [
     role: "Ph.D. in Mechanical Engineering",
     // by cgpt: State the approved blind-review result before the doctoral research description.
     description:
-      "Doctoral dissertation: rated A by all three reviewers in the blind review. Research on robot perception and closed-loop manipulation, with an emphasis on vision-guided precision assembly, image-based visual servoing, collision-aware motion planning, and real-world robotic system integration.",
+      "Doctoral dissertation: rated A by all three reviewers in the blind review. Research on computer vision and embodied robotic manipulation, including vision-guided perception and control, visuotactile sensing and fusion, and fine-grained autonomous manipulation.",
     descriptionHtml:
-      "Doctoral dissertation: rated <strong>A by all three reviewers</strong> in the blind review. Research on <strong>robot perception and closed-loop manipulation</strong>, with an emphasis on vision-guided precision assembly, image-based visual servoing, collision-aware motion planning, and real-world robotic system integration.",
+      "Doctoral dissertation: rated <strong class=\"achievement-highlight\">A by all three reviewers</strong> in the blind review. Research on <strong>computer vision and embodied robotic manipulation</strong>, including <strong>vision-guided perception and control</strong>, <strong>visuotactile sensing and fusion</strong>, and <strong>fine-grained autonomous manipulation</strong>.",
   },
   {
     period: "2023",
     organization: "Huawei",
     role: "Robotics Research Intern",
     description:
-      "Developed monocular vision, pose estimation, and closed-loop control algorithms for flexible printed circuit assembly, achieving sub-0.4 mm alignment error in the reported project evaluation.",
+      "Developed monocular vision, pose estimation, and closed-loop control algorithms for robotic assembly of flexible printed circuits, achieving sub-0.4 mm alignment error in the reported project evaluation.",
   },
   {
     period: "2019-2022",
     organization: "Tsinghua University",
     role: "M.S. in Mechanical Engineering",
     description:
-      "Ranked 1/46. Research on vision-based robotic perception and autonomous manipulation, including object localization, pose measurement, multi-sensor feedback, and robotic system development.",
+      "Ranked 1/46. Research on vision-based robotic perception and autonomous manipulation, with an emphasis on pose estimation, multi-sensor fusion, and robotic system development and integration.",
     descriptionHtml:
-      "Ranked 1/46. Research on <strong>vision-based robotic perception and autonomous manipulation</strong>, including object localization, pose measurement, multi-sensor feedback, and robotic system development.",
+      "<strong class=\"achievement-highlight\">Ranked 1/46</strong>. Research on <strong>vision-based robotic perception and autonomous manipulation</strong>, with an emphasis on <strong>pose estimation</strong>, <strong>multi-sensor fusion</strong>, and <strong>robotic system development and integration</strong>.",
   },
   {
     period: "2015-2019",
     organization: "Wuhan University of Science and Technology",
     role: "B.Eng. in Mechatronic Engineering",
     description:
-      "Rank 1/440.",
+      "Ranked 1/440 for four consecutive years.",
+    descriptionHtml:
+      "<strong class=\"achievement-highlight\">Ranked 1/440 for four consecutive years.</strong>",
   },
 ];
 

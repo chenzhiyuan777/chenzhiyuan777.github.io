@@ -714,6 +714,12 @@ h3 {
   font-weight: 700;
 }
 
+/* by cgpt: Highlight verified academic rankings without changing ordinary bold text. */
+.achievement-highlight {
+  color: #b54708;
+  font-weight: 800;
+}
+
 .timeline-item div > p:last-child {
   margin: 0;
 }
