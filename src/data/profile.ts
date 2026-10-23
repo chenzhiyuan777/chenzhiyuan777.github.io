@@ -61,19 +61,19 @@ export const news: NewsItem[] = [
   },
   {
     date: "2026",
-    // by cgpt: Announce the public preprint and the current RA-L review status without implying acceptance.
-    text: "ForeTac is now available on arXiv and under review at IEEE RA-L.",
+    // by cgpt: Highlight predictive tactile guidance alongside the preprint and review status.
+    text: "Predictive tactile guidance: ForeTac is on arXiv and under review at IEEE RA-L.",
     textHtml:
-      "<strong>ForeTac</strong> is now available on <strong>arXiv</strong> and under review at <strong>IEEE RA-L</strong>.",
+      "<strong>Predictive tactile guidance</strong>: <strong>ForeTac</strong> is on <strong>arXiv</strong> and under review at <strong>IEEE RA-L</strong>.",
     href: "https://arxiv.org/abs/2610.18118",
     jumpHref: "#publication-foretac",
     jumpLabel: "View the ForeTac publication",
   },
   {
     date: "2026",
-    // by cgpt: Keep the user-requested Top 1% label consistent with the publication.
-    text: "PACE has been accepted for an oral presentation (Top 1%) at CoRL 2026.",
-    textHtml: "<strong>PACE</strong> has been accepted for an <strong>oral presentation (Top 1%)</strong> at CoRL 2026.",
+    // by cgpt: Describe PACE's reactive tactile control at deployment and retain its oral distinction.
+    text: "Reactive tactile control: PACE accepted at CoRL 2026 (Oral · Top 1%).",
+    textHtml: "<strong>Reactive tactile control</strong>: <strong>PACE</strong> accepted at CoRL 2026 (<strong>Oral · Top 1%</strong>).",
     href: "https://pace-insertion.github.io/",
     jumpHref: "#publication-pace",
     jumpLabel: "View the PACE publication",
