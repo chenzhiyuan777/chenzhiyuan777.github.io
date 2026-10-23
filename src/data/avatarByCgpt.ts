@@ -3,7 +3,7 @@ export const avatarByCgpt = {
   "src": "/images/profile-lab-illustrated-by-cgpt.webp",
   "width": 1254,
   "height": 1254,
-  "iconVersion": "fb65ceee3205d995"
+  "iconVersion": "3518333a86c24f1f"
 } as const;
 
 export const avatarImageByCgpt = `${avatarByCgpt.src}?v=${avatarByCgpt.iconVersion}`;
