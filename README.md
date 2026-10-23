@@ -162,11 +162,12 @@ are derived from the currently selected avatar via
 `public/favicon.ico` and the multi-size PNGs. Chrome's site-information button
 at the far left of an address bar is browser UI and cannot be changed by HTML.
 
-<!-- by cgpt: Activate the user-approved square portrait and retain the old avatar. -->
-The current profile photo is `public/images/profile-lab-portrait-by-cgpt.webp`
-(960 x 960). The earlier `public/images/profile-with-robot-final.webp`
-(960 x 840) remains beside it for switching, as requested by the user.
-The source photo, full generation prompt and export script are documented in
+<!-- by cgpt: Select the user-provided illustration and retain the previous lab portrait. -->
+The current avatar is `public/images/profile-lab-illustrated-by-cgpt.webp`
+(1254 x 1254), losslessly encoded from the user-provided illustration with every
+RGB pixel unchanged. The previous `public/images/profile-lab-portrait-by-cgpt.webp`
+(960 x 960) remains beside it for switching. Earlier avatars stay in the local
+material library. The source image, encoding proof and switch script are documented in
 `/home/chenzhiyuan/Documents/personalPAGE/midocx/media/avatar/README.md`.
 The sidebar
 uses a circular frame and `object-fit: contain` to keep the person and robotic

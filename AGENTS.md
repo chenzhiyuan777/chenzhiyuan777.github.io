@@ -61,5 +61,7 @@
   测试截图及过程记录保存到相邻的 `personalPAGE/midocx/` 素材库，不推送。
 - 发布目录只保留实际使用资源；两张已批准头像是未选资源的唯一例外。
   换头像必须通过素材库切换脚本同步对应的 favicon 和 PNG 图标。
+  by cgpt：当前两张为插画 `profile-lab-illustrated-by-cgpt.webp` 与真人照
+  `profile-lab-portrait-by-cgpt.webp`；更早版本只在素材库保留。
 - 新改动标注 by cgpt。识别并保留其他窗口改动，提交前按真实差异确认范围。
   遵循用户的暂存、提交及推送授权，不自动改写历史。
