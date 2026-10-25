@@ -71,9 +71,9 @@ export const news: NewsItem[] = [
   },
   {
     date: "2026",
-    // by cgpt: Describe PACE's reactive tactile control at deployment and retain its oral distinction.
-    text: "Reactive tactile control: PACE accepted at CoRL 2026 (Oral · Top 1%).",
-    textHtml: "<strong>Reactive tactile control</strong>: <strong>PACE</strong> accepted at CoRL 2026 (<strong>Oral · Top 1%</strong>).",
+    // by cgpt: Highlight reactive tactile policies and retain PACE's oral distinction.
+    text: "Reactive tactile policies: PACE accepted at CoRL 2026 (Oral · Top 1%).",
+    textHtml: "<strong>Reactive tactile policies</strong>: <strong>PACE</strong> accepted at CoRL 2026 (<strong>Oral · Top 1%</strong>).",
     href: "https://pace-insertion.github.io/",
     jumpHref: "#publication-pace",
     jumpLabel: "View the PACE publication",
