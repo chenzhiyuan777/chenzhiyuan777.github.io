@@ -342,7 +342,7 @@ export const workExperience = [
     organization: "Xiaomi",
     role: "Robotics Researcher",
     description:
-      "Developing fine-grained vision-tactile perception and precision manipulation algorithms, leveraging human data for learning robust robot behaviors.",
+      "Developing fine-grained vision-tactile perception and contact-rich manipulation algorithms, leveraging human data for learning robust robot behaviors.",
   },
   {
     period: "2023",
@@ -353,14 +353,22 @@ export const workExperience = [
   },
 ];
 
-// by cgpt: Describe all five requested Xiaomi projects without adding project media.
+// by cgpt: Follow the author's newest-to-oldest project order; dates have not been supplied.
 export const researchProjects = [
   {
     type: "R&D",
     organization: "Xiaomi Robotics",
-    title: "From Reactive to Predictive Tactile Fine Manipulation",
+    title: "Egocentric Data for Reinforcement Learning and World-Action Models",
     description:
-      "Developing tactile policies for fine-grained robotic manipulation, from reactive feedback to predictive, contact-aware control.",
+      "Exploring how egocentric human data can support reinforcement learning and world-action modeling for robotic manipulation.",
+    logo: "/images/xiaomi.png",
+  },
+  {
+    type: "R&D",
+    organization: "Xiaomi Robotics",
+    title: "EgoData Processing Pipeline",
+    description:
+      "Creating data processing and curation pipelines for EgoData to support scalable robot learning.",
     logo: "/images/xiaomi.png",
   },
   {
@@ -374,17 +382,17 @@ export const researchProjects = [
   {
     type: "R&D",
     organization: "Xiaomi Robotics",
-    title: "Vision-Language-Action Models and Infrastructure",
+    title: "From Reactive to Predictive Tactile Policies for Contact-Rich Manipulation",
     description:
-      "Building vision-language-action models and supporting infrastructure for general-purpose robotic manipulation.",
+      "Developing tactile policies for contact-rich robotic manipulation, from reactive feedback to predictive, contact-aware control.",
     logo: "/images/xiaomi.png",
   },
   {
     type: "R&D",
     organization: "Xiaomi Robotics",
-    title: "EgoData Processing Pipeline",
+    title: "Vision-Language-Action Models and Infrastructure",
     description:
-      "Creating data processing and curation pipelines for EgoData to support scalable robot learning.",
+      "Building vision-language-action models and supporting infrastructure for general-purpose robotic manipulation.",
     logo: "/images/xiaomi.png",
   },
   {
