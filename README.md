@@ -34,9 +34,14 @@ Most public content is stored in [`src/data/profile.ts`](src/data/profile.ts):
 
 - news
 - publications and project links
-- work and education history
+- work experience and research projects
 - patents
 - competitions and honors
+
+<!-- by cgpt: Summarize doctoral education in the introduction instead of a separate timeline. -->
+About Me states the Tsinghua Ph.D. and current research directions. The sidebar
+shows the current role and contact link; there is no separate education section
+or navigation item. Earlier education details stay in the local material archive.
 
 Images live in `public/images/`. Publication media use the template's
 left-image/right-description proportions and a shared 16:9 display frame so

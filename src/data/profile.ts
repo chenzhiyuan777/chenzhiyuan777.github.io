@@ -335,24 +335,14 @@ export const publications: Publication[] = [
   },
 ];
 
-export const experiences = [
+// by cgpt: Publish professional positions only; education history is archived in the local material library.
+export const workExperience = [
   {
     period: "2025-Present",
     organization: "Xiaomi",
     role: "Robotics Researcher",
     description:
       "Developing fine-grained vision-tactile perception and precision manipulation algorithms, leveraging human data for learning robust robot behaviors.",
-    placeholder: false,
-  },
-  {
-    period: "2022-2025",
-    organization: "Tsinghua University",
-    role: "Ph.D. in Mechanical Engineering",
-    // by cgpt: State the approved blind-review result before the doctoral research description.
-    description:
-      "Doctoral dissertation: rated A by all three reviewers in the blind review. Research on computer vision and embodied robotic manipulation, including vision-guided perception and control, visuotactile sensing and fusion, and fine-grained autonomous manipulation.",
-    descriptionHtml:
-      "Doctoral dissertation: rated <strong class=\"achievement-highlight\">A by all three reviewers</strong> in the blind review. Research on <strong>computer vision and embodied robotic manipulation</strong>, including <strong>vision-guided perception and control</strong>, <strong>visuotactile sensing and fusion</strong>, and <strong>fine-grained autonomous manipulation</strong>.",
   },
   {
     period: "2023",
@@ -360,24 +350,6 @@ export const experiences = [
     role: "Robotics Research Intern",
     description:
       "Developed monocular vision, pose estimation, and closed-loop control algorithms for robotic assembly of flexible printed circuits, achieving sub-0.4 mm alignment error in the reported project evaluation.",
-  },
-  {
-    period: "2019-2022",
-    organization: "Tsinghua University",
-    role: "M.S. in Mechanical Engineering",
-    description:
-      "Ranked 1/46. Research on vision-based robotic perception and autonomous manipulation, with an emphasis on pose estimation, multi-sensor fusion, and robotic system development and integration.",
-    descriptionHtml:
-      "<strong class=\"achievement-highlight\">Ranked 1/46</strong>. Research on <strong>vision-based robotic perception and autonomous manipulation</strong>, with an emphasis on <strong>pose estimation</strong>, <strong>multi-sensor fusion</strong>, and <strong>robotic system development and integration</strong>.",
-  },
-  {
-    period: "2015-2019",
-    organization: "Wuhan University of Science and Technology",
-    role: "B.Eng. in Mechatronic Engineering",
-    description:
-      "Ranked 1/440 for four consecutive years.",
-    descriptionHtml:
-      "<strong class=\"achievement-highlight\">Ranked 1/440 for four consecutive years.</strong>",
   },
 ];
 
@@ -424,16 +396,6 @@ export const researchProjects = [
     logo: "/images/xiaomi.png",
   },
 ];
-
-export const education = experiences.filter((experience) =>
-  ["Tsinghua University", "Wuhan University of Science and Technology"].includes(
-    experience.organization,
-  ),
-);
-
-export const workExperience = experiences.filter(
-  (experience) => !education.includes(experience),
-);
 
 // Keep source dates at day precision for sorting and evidence; the page renders years only.
 type Patent = {

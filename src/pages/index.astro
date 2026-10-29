@@ -13,7 +13,6 @@ import { CornerDownRight } from "lucide-astro";
 import PatentsSectionByCgpt from "../components/PatentsSectionByCgpt.astro";
 import AwardsSectionByCgpt from "../components/AwardsSectionByCgpt.astro";
 import {
-  education,
   news,
   publications,
   researchProjects,
@@ -33,14 +32,11 @@ const personSchema = {
   // by cgpt: Keep Person metadata aligned with the approved visible avatar.
   image: new URL(avatarImageByCgpt, "https://chenzhiyuan777.github.io/").href,
   email: "mailto:chenzy19@tsinghua.edu.cn",
+  // by cgpt: Keep structured education aligned with the Ph.D. summarized in About Me.
   alumniOf: [
     {
       "@type": "CollegeOrUniversity",
       name: "Tsinghua University",
-    },
-    {
-      "@type": "CollegeOrUniversity",
-      name: "Wuhan University of Science and Technology",
     },
   ],
   worksFor: {
@@ -65,15 +61,17 @@ const personSchema = {
     <div class="content-column">
       <section id="about-me" class="intro-section" aria-labelledby="about-title">
         <h1 id="about-title">About Me</h1>
+        <!-- by cgpt: Summarize the doctoral background here instead of a separate education timeline. -->
         <p class="intro-lead">
           <OrganizationText
-            text="I am a robotics researcher at Xiaomi, working on embodied intelligence and learning-based robotic manipulation. I received my Ph.D. in Mechanical Engineering from Tsinghua University in 2025."
+            text="I am a robotics researcher at Xiaomi. I received my Ph.D. in Mechanical Engineering from Tsinghua University in 2025."
             size={22}
             emphasize
           />
         </p>
+        <!-- by cgpt: Connect the research directions to visual, tactile and human-demonstration data. -->
         <p>
-          My research focuses on <strong>embodied intelligence</strong>, <strong>generalizable robot learning</strong>, and <strong>end-to-end manipulation policies</strong> for real-world tasks. I am particularly interested in <strong>vision-language-action (VLA) models</strong> and <strong>world-action models (WAMs)</strong>, leveraging visual, tactile, and human-demonstration data to learn robust robot behaviors. My work spans vision- and touch-guided manipulation, including reactive tactile control and predictive contact-aware modeling.
+          My research focuses on <strong>embodied intelligence</strong> and <strong>generalizable robotic manipulation</strong>. I am particularly interested in <strong>vision-language-action (VLA) models</strong>, <strong>visuotactile world-action models (WAMs)</strong>, and <strong>tactile policies</strong> spanning reactive feedback and predictive contact reasoning. I use visual, tactile, and human-demonstration data to learn robust, <strong>end-to-end manipulation policies</strong> for real-world tasks.
         </p>
         <p>
           <OrganizationText text="Previously, my research at Tsinghua University and Huawei focused on computer vision, visuotactile sensing and fusion, visual servoing, and fine-grained robotic manipulation." />
@@ -172,38 +170,18 @@ const personSchema = {
         <div class="timeline">
           {
             workExperience.map((experience) => (
-              <article class:list={["timeline-item", experience.placeholder && "is-placeholder"]}>
+              <article class="timeline-item">
                 <p class="timeline-period"><InlineTextByCgpt text={experience.period} /></p>
                 <div>
                   <h3 class="timeline-organization">
                     <OrganizationName name={experience.organization} />
                   </h3>
                   <p class="timeline-role"><InlineTextByCgpt text={experience.role} /></p>
-                  <p><InlineTextByCgpt text={experience.descriptionHtml ?? experience.description} html={Boolean(experience.descriptionHtml)} /></p>
+                  <p><InlineTextByCgpt text={experience.description} /></p>
                 </div>
               </article>
             ))
           }
-        </div>
-      </section>
-
-      <section id="educations" class="content-section" aria-labelledby="education-title">
-        <div class="section-heading compact">
-          <div><h2 id="education-title">📖 Educations</h2></div>
-        </div>
-        <div class="timeline">
-          {education.map((experience) => (
-            <article class="timeline-item">
-              <p class="timeline-period"><InlineTextByCgpt text={experience.period} /></p>
-              <div>
-                <h3 class="education-heading">
-                  <OrganizationName name={experience.organization} />
-                </h3>
-                <p class="timeline-role"><InlineTextByCgpt text={experience.role} /></p>
-                <p><InlineTextByCgpt text={experience.descriptionHtml ?? experience.description} html={Boolean(experience.descriptionHtml)} /></p>
-              </div>
-            </article>
-          ))}
         </div>
       </section>
 
