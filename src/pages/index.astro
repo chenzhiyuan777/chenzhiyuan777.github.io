@@ -5,7 +5,6 @@ import ProfileSidebar from "../components/ProfileSidebar.astro";
 import { avatarImageByCgpt } from "../data/avatarByCgpt";
 import PublicationItem from "../components/PublicationItem.astro";
 import OrganizationName from "../components/OrganizationName.astro";
-import OrganizationText from "../components/OrganizationText.astro";
 // by cgpt: Apply the shared short-phrase rules to news and timeline text as well.
 import InlineTextByCgpt from "../components/InlineTextByCgpt.astro";
 // by cgpt: News uses named links and sparse emphasis instead of whole-sentence links.
@@ -65,18 +64,11 @@ const personSchema = {
         <h1 id="about-title">About Me</h1>
         <!-- by cgpt: Summarize the doctorate here; its review result is recorded in News. -->
         <p class="intro-lead">
-          <OrganizationText
-            text="I am a robotics researcher at Xiaomi. I received my Ph.D. in Mechanical Engineering from Tsinghua University in 2025."
-            size={22}
-            emphasize
-          />
+          I am a robotics researcher at <strong><OrganizationName name="Xiaomi Robotics" size={22} /></strong>. I received my Ph.D. in Mechanical Engineering from <strong><OrganizationName name="Tsinghua University" size={22} /></strong> in 2025.
         </p>
         <!-- by cgpt: Connect the research directions to visual, tactile and human-demonstration data. -->
         <p>
-          My research focuses on <strong>embodied intelligence</strong> and <strong>generalizable robotic manipulation</strong>. I am particularly interested in <strong>vision-language-action (VLA) models</strong>, <strong>visuotactile world-action models (WAMs)</strong>, and <strong>tactile policies</strong> spanning reactive feedback and predictive contact reasoning. I use visual, tactile, and human-demonstration data to learn robust, <strong>end-to-end manipulation policies</strong> for real-world tasks.
-        </p>
-        <p>
-          <OrganizationText text="Previously, my research at Tsinghua University and Huawei focused on computer vision, visuotactile sensing and fusion, visual servoing, and contact-rich robotic manipulation." />
+          My research focuses on <strong>embodied intelligence and generalizable robotic manipulation</strong>, spanning <strong>precision, contact-rich, and dexterous manipulation</strong>. I am particularly interested in <strong>visuo-tactile learning, vision-language-action models, and world-action models</strong>, leveraging multimodal perception and human demonstrations to enable robust real-world robotic skills.
         </p>
 
         <div id="-news" class="news-block" aria-labelledby="news-title">

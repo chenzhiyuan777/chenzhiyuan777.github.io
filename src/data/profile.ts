@@ -64,7 +64,7 @@ export const news: NewsItem[] = [
   {
     date: "2026",
     // by cgpt: Highlight predictive tactile guidance alongside the preprint and review status.
-    text: "Predictive tactile guidance: ForeTac is on arXiv and under review at IEEE RA-L.",
+    text: "Predictive tactile guidance: ForeTac is available on arXiv and under review at IEEE RA-L.",
     linkText: "ForeTac",
     emphasis: ["Predictive tactile guidance"],
     href: "https://arxiv.org/abs/2610.18118",
@@ -74,9 +74,9 @@ export const news: NewsItem[] = [
   {
     date: "2026",
     // by cgpt: Highlight reactive tactile policies and retain PACE's oral distinction.
-    text: "Reactive tactile policies: PACE accepted at CoRL 2026 (Oral · Top 1%).",
+    text: "Reactive tactile policies: PACE was selected for an Oral Presentation at CoRL 2026.",
     linkText: "PACE",
-    emphasis: ["Reactive tactile policies", "Oral · Top 1%"],
+    emphasis: ["Reactive tactile policies", "Oral Presentation"],
     href: "https://pace-insertion.github.io/",
     jumpHref: "#publication-pace",
     jumpLabel: "View the PACE publication",
@@ -96,7 +96,7 @@ export const news: NewsItem[] = [
   {
     date: "2025",
     // by cgpt: Keep the graduation News concise and place the dissertation review result here.
-    text: "Received my Ph.D. from Tsinghua University with a dissertation rated A by all reviewers.",
+    text: "Received my Ph.D. from Tsinghua University; dissertation rated A by all reviewers.",
     emphasis: ["A by all reviewers"],
   },
 ];
@@ -162,19 +162,19 @@ export const publications: Publication[] = [
     ],
   },
   {
-    // by cgpt: Author order follows arXiv; ICRA 2026 submission status is user-provided.
+    // by cgpt: ICRA 2027 submission, with the 2026 paper year retained for chronology.
     title: "Finder: Agentic Closed-Loop Object Finding for Embodied Grounding",
     authors:
       "Shixiong Xu, Zhiyuan Chen, Song Ding, Rui Luo, Xiaowei Liang, Dongxu Miao, Zhiying Du",
     authorsHtml:
       "Shixiong Xu, <strong>Zhiyuan Chen</strong>, Song Ding, Rui Luo, Xiaowei Liang, Dongxu Miao, Zhiying Du",
-    venue: "ICRA 2026 (Under Review)",
+    venue: "ICRA 2027 (Under Review)",
     year: "2026",
     image: "/images/publications/finder-overview-by-cgpt.png",
     imageAlt:
       "Finder overview: contextual RGB-D observations feed a planning, detection, verification, and judgment loop for object grounding",
     mediaAspect: "wide",
-    mediaLabel: "ICRA 2026 (Under Review)",
+    mediaLabel: "ICRA 2027 (Under Review)",
     summary:
       "An agentic perception loop plans evidence gathering and verifies object candidates to ground language queries in 3D scenes.",
     links: [
@@ -203,7 +203,7 @@ export const publications: Publication[] = [
       "A camera-centric action representation unifies robot and human demonstrations to train a shared manipulation policy across heterogeneous embodiments.",
     links: [
       { label: "Project", href: "https://public-bots.github.io/UCAG-P/" },
-      { label: "Paper" },
+      { label: "Paper", note: "Coming soon" },
       { label: "Report", href: "https://arxiv.org/abs/2608.26058" },
     ],
   },
@@ -227,7 +227,7 @@ export const publications: Publication[] = [
     links: [
       // by cgpt: Project URL from page 1 of 个人主页/alter/mobicom27-paper415.pdf.
       { label: "Project", href: "https://alter-vla.github.io/ALTER-vla/" },
-      { label: "Paper" },
+      { label: "Paper", note: "Coming soon" },
     ],
   },
   {
@@ -243,7 +243,7 @@ export const publications: Publication[] = [
     imagePoster: "/videos/tim-ibvs/ibvs_overview_view2_2x_clean_clear-poster-lossless-by-cgpt.webp",
     imageAlt: "Monocular visual servoing: orientation alignment followed by docking",
     mediaAspect: "wide",
-    mediaLabel: "IEEE TIM 2025",
+    mediaLabel: "IEEE TIM 2024",
     summary:
       "A monocular visual servoing method plans collision-free assembly motions by aligning part orientation before following a straight docking path.",
     links: [
@@ -363,9 +363,9 @@ export const researchProjects = [
   {
     type: "R&D",
     organization: "Xiaomi Robotics",
-    title: "Egocentric Data for Reinforcement Learning and World-Action Models",
+    title: "Egocentric Learning for Dexterous Manipulation",
     description:
-      "Exploring how egocentric human data can support reinforcement learning and world-action modeling for robotic manipulation.",
+      "Exploring egocentric learning and world-action models for dexterous robotic manipulation, with a focus on transferring human demonstrations to robotic hands and enabling generalizable manipulation skills.",
     logo: "/images/xiaomi.png",
   },
   {
