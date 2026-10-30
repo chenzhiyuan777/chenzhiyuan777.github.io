@@ -51,6 +51,12 @@ type NewsItem = {
 
 export const news: NewsItem[] = [
   {
+    // by cgpt: Lead News with the Xiaomi award, without a trailing jump link.
+    date: "2026",
+    text: "Received the Innovation Breakthrough Award at Xiaomi Robotics.",
+    emphasis: ["Innovation Breakthrough Award"],
+  },
+  {
     date: "2026",
     // by cgpt: Emphasize the model name and result; keep descriptive context at normal weight.
     text: "ViTacX, a visuotactile world-action model, won 1st place in the IROS 2026 · WorldArena 2.0 Real Robot Track (Track 3).",
@@ -80,14 +86,6 @@ export const news: NewsItem[] = [
     href: "https://pace-insertion.github.io/",
     jumpHref: "#publication-pace",
     jumpLabel: "View the PACE publication",
-  },
-  {
-    // by cgpt: Announce the author-provided Xiaomi award and link to its honor entry.
-    date: "2026",
-    text: "Received the Innovation Breakthrough Award at Xiaomi Robotics.",
-    emphasis: ["Innovation Breakthrough Award"],
-    jumpHref: "#honor-xiaomi-innovation-2026",
-    jumpLabel: "View the Innovation Breakthrough Award",
   },
   {
     // by cgpt: Keep the grant news short; the curved arrow opens the full patent entry.
