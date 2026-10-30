@@ -76,7 +76,7 @@ export const news: NewsItem[] = [
     // by cgpt: Highlight reactive tactile policies and retain PACE's oral distinction.
     text: "Reactive tactile policies: PACE accepted at CoRL 2026 (Oral · Top 1%).",
     linkText: "PACE",
-    emphasis: ["Oral · Top 1%"],
+    emphasis: ["Reactive tactile policies", "Oral · Top 1%"],
     href: "https://pace-insertion.github.io/",
     jumpHref: "#publication-pace",
     jumpLabel: "View the PACE publication",
@@ -764,14 +764,16 @@ const honorRecords: Award[] = [
   },
   {
     titleEn: "Top Ten Charming Students",
-    titleZh: "武汉科技大学‘十大魅力学子’荣誉称号",
+    // by cgpt: Use the author's requested school-level wording in the Chinese honor title.
+    titleZh: "校级‘十大魅力学子’荣誉称号",
     recipients: "Zhiyuan Chen / 陈志远",
     date: "2019-05",
     awardingOrganization: "Wuhan University of Science and Technology",
   },
   {
     titleEn: "Outstanding 3D Association President",
-    titleZh: "担任武汉科技大学3D协会会长，并获评校级优秀会长",
+    // by cgpt: Preserve the author-supplied distinction and its 1/10 context.
+    titleZh: "担任学校3D协会会长，并获评优秀会长(1/10)",
     recipients: "Zhiyuan Chen / 陈志远",
     date: "2017-05",
     awardingOrganization: "Wuhan University of Science and Technology",

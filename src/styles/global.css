@@ -381,10 +381,10 @@ h3 {
   margin: 0;
 }
 
-/* by cgpt: Only named works are external links; reserve underlining for interaction. */
+/* by cgpt: Underline the three named works while keeping the sentence in normal text. */
 .news-name-link-by-cgpt {
   color: var(--accent);
-  text-decoration: none;
+  text-decoration: underline;
 }
 
 .news-name-link-by-cgpt:hover,
