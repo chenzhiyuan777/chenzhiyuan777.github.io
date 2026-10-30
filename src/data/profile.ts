@@ -40,7 +40,9 @@ export type Publication = {
 type NewsItem = {
   date: string;
   text: string;
-  textHtml?: string;
+  // by cgpt: Link only the named work and keep emphasis separate from sentence text.
+  linkText?: string;
+  emphasis?: string[];
   icon?: "trophy";
   href?: string;
   jumpHref?: string;
@@ -50,10 +52,10 @@ type NewsItem = {
 export const news: NewsItem[] = [
   {
     date: "2026",
-    // by cgpt: Emphasize the model identity and competition result in one concise News line.
+    // by cgpt: Emphasize the model name and result; keep descriptive context at normal weight.
     text: "ViTacX, a visuotactile world-action model, won 1st place in the IROS 2026 · WorldArena 2.0 Real Robot Track (Track 3).",
-    textHtml:
-      "<strong>ViTacX</strong>, a <strong>visuotactile world-action model</strong>, won <strong>1st place</strong> in the <strong>IROS 2026</strong> · <strong>WorldArena 2.0</strong> Real Robot Track (Track 3).",
+    linkText: "ViTacX",
+    emphasis: ["1st place"],
     icon: "trophy",
     href: "https://huggingface.co/spaces/WorldArena/WorldArena2.0",
     jumpHref: "#competition-worldarena-2026",
@@ -63,8 +65,8 @@ export const news: NewsItem[] = [
     date: "2026",
     // by cgpt: Highlight predictive tactile guidance alongside the preprint and review status.
     text: "Predictive tactile guidance: ForeTac is on arXiv and under review at IEEE RA-L.",
-    textHtml:
-      "<strong>Predictive tactile guidance</strong>: <strong>ForeTac</strong> is on <strong>arXiv</strong> and under review at <strong>IEEE RA-L</strong>.",
+    linkText: "ForeTac",
+    emphasis: ["Predictive tactile guidance"],
     href: "https://arxiv.org/abs/2610.18118",
     jumpHref: "#publication-foretac",
     jumpLabel: "View the ForeTac publication",
@@ -73,7 +75,8 @@ export const news: NewsItem[] = [
     date: "2026",
     // by cgpt: Highlight reactive tactile policies and retain PACE's oral distinction.
     text: "Reactive tactile policies: PACE accepted at CoRL 2026 (Oral · Top 1%).",
-    textHtml: "<strong>Reactive tactile policies</strong>: <strong>PACE</strong> accepted at CoRL 2026 (<strong>Oral · Top 1%</strong>).",
+    linkText: "PACE",
+    emphasis: ["Oral · Top 1%"],
     href: "https://pace-insertion.github.io/",
     jumpHref: "#publication-pace",
     jumpLabel: "View the PACE publication",

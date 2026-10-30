@@ -1,0 +1,33 @@
+---
+// by cgpt: Keep a News sentence readable while linking only its named work.
+import InlineTextByCgpt from "./InlineTextByCgpt.astro";
+import OrganizationText from "./OrganizationText.astro";
+
+interface Props {
+  text: string;
+  href?: string;
+  linkText?: string;
+  emphasis?: string[];
+}
+
+const { text, href, linkText, emphasis = [] } = Astro.props;
+if (href && (!linkText || !text.includes(linkText))) {
+  throw new Error("News external links need a linkText present in the sentence.");
+}
+const phrases = [...new Set([...(href && linkText ? [linkText] : []), ...emphasis])]
+  .sort((a, b) => b.length - a.length);
+const escapeRegExp = (value: string) => value.replace(/[.*+?^$(){}|[\]\\]/g, "\\$&");
+const pieces = phrases.length
+  ? text.split(new RegExp("(" + phrases.map(escapeRegExp).join("|") + ")", "gu"))
+  : [text];
+---
+
+{pieces.map((piece) => href && piece === linkText ? (
+  <a class="news-name-link-by-cgpt" href={href} target="_blank" rel="noopener noreferrer">
+    <strong><InlineTextByCgpt text={piece} /></strong>
+  </a>
+) : emphasis.includes(piece) ? (
+  <strong><InlineTextByCgpt text={piece} /></strong>
+) : (
+  <OrganizationText text={piece} />
+))}

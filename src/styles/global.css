@@ -381,6 +381,18 @@ h3 {
   margin: 0;
 }
 
+/* by cgpt: Only named works are external links; reserve underlining for interaction. */
+.news-name-link-by-cgpt {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.news-name-link-by-cgpt:hover,
+.news-name-link-by-cgpt:focus-visible {
+  color: var(--accent-dark);
+  text-decoration: underline;
+}
+
 .news-jump {
   display: inline-flex;
   align-items: center;

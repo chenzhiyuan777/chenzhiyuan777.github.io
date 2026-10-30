@@ -8,6 +8,8 @@ import OrganizationName from "../components/OrganizationName.astro";
 import OrganizationText from "../components/OrganizationText.astro";
 // by cgpt: Apply the shared short-phrase rules to news and timeline text as well.
 import InlineTextByCgpt from "../components/InlineTextByCgpt.astro";
+// by cgpt: News uses named links and sparse emphasis instead of whole-sentence links.
+import NewsTextByCgpt from "../components/NewsTextByCgpt.astro";
 import { CornerDownRight } from "lucide-astro";
 // by cgpt: Verified sections live separately from the shared profile source.
 import PatentsSectionByCgpt from "../components/PatentsSectionByCgpt.astro";
@@ -90,21 +92,8 @@ const personSchema = {
                     {item.icon === "trophy" && (
                       <span class="news-award-icon" role="img" aria-label="First place trophy">🏆</span>
                     )}
-                    {item.href ? (
-                      <a href={item.href} target="_blank" rel="noopener noreferrer">
-                        {item.textHtml ? (
-                          <InlineTextByCgpt text={item.textHtml} html />
-                        ) : (
-                          <OrganizationText text={item.text} />
-                        )}
-                      </a>
-                    ) : (
-                      item.textHtml ? (
-                        <InlineTextByCgpt text={item.textHtml} html />
-                      ) : (
-                        <OrganizationText text={item.text} />
-                      )
-                    )}
+                    <NewsTextByCgpt text={item.text} href={item.href}
+                      linkText={item.linkText} emphasis={item.emphasis} />
                     {item.jumpHref && (
                       <a
                         class="news-jump"
