@@ -75,9 +75,12 @@
 - 通用操作研究表述统一为 Contact-rich Manipulation，正文使用小写形式；
   正式论文/专利名称和本地历史归档保留原文。Research and Projects沿用作者给定的
   时间倒序，不自行编造起止日期。
-- by cgpt：未公开的Paper显示不可点击的Paper (Coming soon)，不链接回主页。
+- by cgpt：未公开的Paper显示不可点击的Paper (Not Yet Public)，不链接回主页。
   投稿会议年份与论文年份分开：Finder为2026论文、ICRA 2027在投，沿用AAAI/
   MobiCom的年份区分；TIM年份及媒体标签均为2024。About Me以作者最新两段文案为准。
+- by cgpt：Work Experience的当前职位描述与About Me及Research定位保持一致。
+  新增荣誉时复用现有机构logo；已批准的旧荣誉相对顺序按奖项定位维护，
+  不以固定行号调整，避免插入新项后误换其他条目。
 
 ## 文件与协作边界
 

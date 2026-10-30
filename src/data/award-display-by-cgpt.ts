@@ -70,10 +70,18 @@ const sortedHonorDisplayRecords: AwardDisplayRecord[] = selectedHonors
   .sort(sortByLatestDate)
   .map(toDisplayRecord);
 
-// by cgpt: Preserve the requested presentation order for the eighth and ninth honors.
-[sortedHonorDisplayRecords[7], sortedHonorDisplayRecords[8]] = [
-  sortedHonorDisplayRecords[8],
-  sortedHonorDisplayRecords[7],
-];
+// by cgpt: Preserve the author's relative order when new honors are inserted above.
+const summerPracticeIndex = sortedHonorDisplayRecords.findIndex(
+  (award) => award.titleZh === "清华大学高端装备暑期实践优秀项目",
+);
+const selfImprovementIndex = sortedHonorDisplayRecords.findIndex(
+  (award) => award.titleZh === "湖北省大学生自强之星",
+);
+if (selfImprovementIndex >= 0 && summerPracticeIndex > selfImprovementIndex) {
+  [sortedHonorDisplayRecords[selfImprovementIndex], sortedHonorDisplayRecords[summerPracticeIndex]] = [
+    sortedHonorDisplayRecords[summerPracticeIndex],
+    sortedHonorDisplayRecords[selfImprovementIndex],
+  ];
+}
 
 export const honorDisplayRecords = sortedHonorDisplayRecords;

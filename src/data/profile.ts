@@ -82,6 +82,14 @@ export const news: NewsItem[] = [
     jumpLabel: "View the PACE publication",
   },
   {
+    // by cgpt: Announce the author-provided Xiaomi award and link to its honor entry.
+    date: "2026",
+    text: "Received the Innovation Breakthrough Award at Xiaomi Robotics.",
+    emphasis: ["Innovation Breakthrough Award"],
+    jumpHref: "#honor-xiaomi-innovation-2026",
+    jumpLabel: "View the Innovation Breakthrough Award",
+  },
+  {
     // by cgpt: Keep the grant news short; the curved arrow opens the full patent entry.
     date: "2026",
     text: "Robotic bin-picking invention patent granted.",
@@ -203,7 +211,7 @@ export const publications: Publication[] = [
       "A camera-centric action representation unifies robot and human demonstrations to train a shared manipulation policy across heterogeneous embodiments.",
     links: [
       { label: "Project", href: "https://public-bots.github.io/UCAG-P/" },
-      { label: "Paper", note: "Coming soon" },
+      { label: "Paper", note: "Not Yet Public" },
       { label: "Report", href: "https://arxiv.org/abs/2608.26058" },
     ],
   },
@@ -227,7 +235,7 @@ export const publications: Publication[] = [
     links: [
       // by cgpt: Project URL from page 1 of 个人主页/alter/mobicom27-paper415.pdf.
       { label: "Project", href: "https://alter-vla.github.io/ALTER-vla/" },
-      { label: "Paper", note: "Coming soon" },
+      { label: "Paper", note: "Not Yet Public" },
     ],
   },
   {
@@ -346,8 +354,9 @@ export const workExperience = [
     period: "2025-Present",
     organization: "Xiaomi",
     role: "Robotics Researcher",
+    // by cgpt: Align the current role with the approved About Me and research focus.
     description:
-      "Developing fine-grained vision-tactile perception and contact-rich manipulation algorithms, leveraging human data for learning robust robot behaviors.",
+      "Developing learning-based approaches for visuo-tactile and dexterous robotic manipulation, leveraging multimodal perception and human demonstrations to enable robust real-world skills.",
   },
   {
     period: "2023",
@@ -687,6 +696,15 @@ const competitionAwardRecords: Award[] = [
 ];
 
 const honorRecords: Award[] = [
+  {
+    // by cgpt: Keep the supplied award year and department, reusing the existing Xiaomi logo.
+    id: "honor-xiaomi-innovation-2026",
+    titleEn: "Innovation Breakthrough Award",
+    titleZh: "创新突破奖",
+    recipients: "Zhiyuan Chen / 陈志远",
+    date: "2026",
+    awardingOrganization: "Autonomous Driving and Robotics Department, Xiaomi",
+  },
   {
     titleEn: "Tsinghua Friends–Weihai Talent Scholarship",
     titleZh: "清华之友-威海英才奖学金",
