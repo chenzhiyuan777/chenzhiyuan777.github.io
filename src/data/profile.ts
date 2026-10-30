@@ -95,7 +95,9 @@ export const news: NewsItem[] = [
   },
   {
     date: "2025",
-    text: "Received my Ph.D. in Mechanical Engineering from Tsinghua University.",
+    // by cgpt: Keep the graduation News concise and place the dissertation review result here.
+    text: "Received my Ph.D. from Tsinghua University with a dissertation rated A by all reviewers.",
+    emphasis: ["A by all reviewers"],
   },
 ];
 
