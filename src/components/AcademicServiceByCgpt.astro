@@ -1,0 +1,46 @@
+---
+// by cgpt: Supplement Work Experience with approved service, teaching and leadership.
+import OrganizationText from "./OrganizationText.astro";
+
+const entries = [
+  {
+    label: "Reviewer",
+    text: "ICRA, IEEE TIM, and AEI, among others.",
+  },
+  {
+    label: "Teaching",
+    text: "Teaching Assistant for Calculus and UAV Development at Tsinghua University; recognized as an Outstanding Teaching Assistant.",
+  },
+  {
+    label: "Leadership",
+    text: "Led a doctoral student social practice team at Tsinghua University; the team received a university-level Gold Award.",
+  },
+];
+---
+
+<div class="work-service-by-cgpt">
+  {entries.map(({ label, text }) => (
+    <p><strong>{label}:</strong>{" "}<OrganizationText text={text} /></p>
+  ))}
+</div>
+
+<style>
+  /* by cgpt: Align with the professional timeline's text column without another heading. */
+  .work-service-by-cgpt {
+    margin: 15px 0 0 145px;
+  }
+
+  .work-service-by-cgpt p {
+    margin: 0 0 7.5px;
+  }
+
+  .work-service-by-cgpt p:last-child {
+    margin-bottom: 0;
+  }
+
+  @media (max-width: 520px) {
+    .work-service-by-cgpt {
+      margin-left: 0;
+    }
+  }
+</style>

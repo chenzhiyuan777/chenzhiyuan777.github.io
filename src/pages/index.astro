@@ -13,6 +13,8 @@ import { CornerDownRight } from "lucide-astro";
 // by cgpt: Verified sections live separately from the shared profile source.
 import PatentsSectionByCgpt from "../components/PatentsSectionByCgpt.astro";
 import AwardsSectionByCgpt from "../components/AwardsSectionByCgpt.astro";
+// by cgpt: Keep the approved service notes inside Work Experience without a new section.
+import AcademicServiceByCgpt from "../components/AcademicServiceByCgpt.astro";
 import {
   news,
   publications,
@@ -164,6 +166,7 @@ const personSchema = {
             ))
           }
         </div>
+        <AcademicServiceByCgpt />
       </section>
 
       <AwardsSectionByCgpt kind="honors" />

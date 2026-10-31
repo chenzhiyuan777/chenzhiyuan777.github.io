@@ -81,6 +81,9 @@
 - by cgpt：Work Experience的当前职位描述与About Me及Research定位保持一致。
   新增荣誉时复用现有机构logo；已批准的旧荣誉相对顺序按奖项定位维护，
   不以固定行号调整，避免插入新项后误换其他条目。
+- by cgpt：审稿、助教及博士实践带队以Reviewer/Teaching/Leadership三段行内标签
+  补充在Work Experience职业时间线之后，不另设标题、章节或导航；审稿保留
+  among others，不编造日期，实践金奖明确属于团队。
 
 ## 文件与协作边界
 
