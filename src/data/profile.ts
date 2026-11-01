@@ -51,10 +51,12 @@ type NewsItem = {
 
 export const news: NewsItem[] = [
   {
-    // by cgpt: Lead News with the Xiaomi award, without a trailing jump link.
+    // by cgpt: Lead News with the Xiaomi award and link its arrow to the honor entry.
     date: "2026",
     text: "Received the Innovation Breakthrough Award at Xiaomi Robotics.",
     emphasis: ["Innovation Breakthrough Award"],
+    jumpHref: "#honor-xiaomi-innovation-2026",
+    jumpLabel: "View the Innovation Breakthrough Award",
   },
   {
     date: "2026",

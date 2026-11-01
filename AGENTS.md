@@ -61,6 +61,8 @@
   曲线箭头保持站内跳转。只加粗作品名、关键结果及选定研究定位，当前
   Predictive tactile guidance与Reactive tactile policies均加粗，不整句链接或加粗。
   日期、事实和论文状态按原数据保持。
+- by cgpt：创新突破奖News位于第一项，末尾曲线箭头链接到
+  Awards & Honors的对应条目#honor-xiaomi-innovation-2026。
 
 - by cgpt：不单列 Education 板块或导航。About Me 简述清华大学机械工程博士
   （2025）与当前研究方向；侧栏聚焦当前职位和联系方式，不重复展开学历。
