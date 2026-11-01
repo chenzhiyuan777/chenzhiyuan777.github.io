@@ -84,8 +84,9 @@
 - by cgpt：Work Experience的当前职位描述与About Me及Research定位保持一致。
   新增荣誉时复用现有机构logo；已批准的旧荣誉相对顺序按奖项定位维护，
   不以固定行号调整，避免插入新项后误换其他条目。
-- by cgpt：审稿、助教及社会实践以Reviewer/Teaching/Social Practice三段行内标签
-  补充在Work Experience职业时间线之后，不另设标题、章节或导航；审稿保留
+- by cgpt：Teaching与Social Practice并入Work Experience的原有时间线，复用小米/
+  华为的日期左、单位与角色/内容右布局及手机适配，单位为清华并显示原logo。
+  Reviewer在四项经历后保留为简短行内标签，不另设标题、章节或导航，保留
   among others。Teaching用作者提供的2022–2024，Social Practice用2023，其他
   日期不编造；实践写Captain身份，不用Led动词，金奖明确属于团队；加粗
   Outstanding Teaching Assistant和Gold Award。

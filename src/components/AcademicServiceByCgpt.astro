@@ -1,65 +1,63 @@
 ---
-// by cgpt: Supplement Work Experience with approved service, teaching and social practice.
-import OrganizationText from "./OrganizationText.astro";
+// by cgpt: Render teaching and social practice with the shared Work Experience timeline.
+import OrganizationName from "./OrganizationName.astro";
+import InlineTextByCgpt from "./InlineTextByCgpt.astro";
 
 // by cgpt: Dates are author-provided; emphasize the two honors without raw HTML.
 interface ServiceEntry {
-  label: string;
-  period?: string;
+  kind: "teaching" | "social-practice";
+  period: string;
+  organization: string;
+  role: string;
   text: string;
-  emphasis?: string;
+  emphasis: string;
 }
 
 const entries: ServiceEntry[] = [
   {
-    label: "Reviewer",
-    text: "ICRA, IEEE TIM, and AEI, among others.",
-  },
-  {
-    label: "Teaching",
+    kind: "teaching",
     period: "2022–2024",
-    text: "Teaching Assistant for Calculus and UAV Development at Tsinghua University; recognized as an Outstanding Teaching Assistant.",
+    organization: "Tsinghua University",
+    role: "Teaching Assistant",
+    text: "Assisted with Calculus and UAV Development courses; recognized as an Outstanding Teaching Assistant.",
     emphasis: "Outstanding Teaching Assistant",
   },
   {
-    label: "Social Practice",
+    kind: "social-practice",
     period: "2023",
-    text: "Captain of a doctoral student social practice team at Tsinghua University; the team received a university-level Gold Award.",
+    organization: "Tsinghua University",
+    role: "Social Practice Team Captain",
+    text: "The doctoral student social practice team received a university-level Gold Award.",
     emphasis: "Gold Award",
   },
 ];
 ---
 
-<div class="work-service-by-cgpt">
-  {entries.map(({ label, period, text, emphasis }) => {
-    const [prefix, suffix = ""] = emphasis ? text.split(emphasis) : [text];
-    return (
-      <p>
-        <strong>{label}{period && ` (${period})`}:</strong>{" "}
-        <OrganizationText text={prefix} />
-        {emphasis && <strong>{emphasis}</strong>}
-        <OrganizationText text={suffix} />
-      </p>
-    );
-  })}
-</div>
+{entries.map(({ kind, period, organization, role, text, emphasis }) => {
+  const [prefix, suffix = ""] = text.split(emphasis);
+  return (
+    <article class="timeline-item" data-service-by-cgpt={kind}>
+      <p class="timeline-period"><InlineTextByCgpt text={period} /></p>
+      <div>
+        <h3 class="timeline-organization"><OrganizationName name={organization} /></h3>
+        <p class="timeline-role"><InlineTextByCgpt text={role} /></p>
+        <p><InlineTextByCgpt text={prefix} /><strong>{emphasis}</strong><InlineTextByCgpt text={suffix} /></p>
+      </div>
+    </article>
+  );
+})}
+
+<!-- by cgpt: Keep reviewing as a concise note after all four dated experiences. -->
+<p class="work-reviewer-by-cgpt"><strong>Reviewer:</strong>{" "}<InlineTextByCgpt text="ICRA, IEEE TIM, and AEI, among others." /></p>
 
 <style>
-  /* by cgpt: Align with the professional timeline's text column without another heading. */
-  .work-service-by-cgpt {
+  /* by cgpt: Align the undated Reviewer note with the timeline's content column. */
+  .work-reviewer-by-cgpt {
     margin: 15px 0 0 145px;
   }
 
-  .work-service-by-cgpt p {
-    margin: 0 0 7.5px;
-  }
-
-  .work-service-by-cgpt p:last-child {
-    margin-bottom: 0;
-  }
-
   @media (max-width: 520px) {
-    .work-service-by-cgpt {
+    .work-reviewer-by-cgpt {
       margin-left: 0;
     }
   }

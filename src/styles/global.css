@@ -637,7 +637,7 @@ h3 {
   margin-bottom: 5px;
 }
 
-/* by cgpt: The timeline now presents professional positions only. */
+/* by cgpt: Align organization names and logos across all Work Experience entries. */
 .timeline-organization {
   display: flex;
   align-items: center;
