@@ -1,27 +1,47 @@
 ---
-// by cgpt: Supplement Work Experience with approved service, teaching and leadership.
+// by cgpt: Supplement Work Experience with approved service, teaching and social practice.
 import OrganizationText from "./OrganizationText.astro";
 
-const entries = [
+// by cgpt: Dates are author-provided; emphasize the two honors without raw HTML.
+interface ServiceEntry {
+  label: string;
+  period?: string;
+  text: string;
+  emphasis?: string;
+}
+
+const entries: ServiceEntry[] = [
   {
     label: "Reviewer",
     text: "ICRA, IEEE TIM, and AEI, among others.",
   },
   {
     label: "Teaching",
+    period: "2022–2024",
     text: "Teaching Assistant for Calculus and UAV Development at Tsinghua University; recognized as an Outstanding Teaching Assistant.",
+    emphasis: "Outstanding Teaching Assistant",
   },
   {
-    label: "Leadership",
-    text: "Led a doctoral student social practice team at Tsinghua University; the team received a university-level Gold Award.",
+    label: "Social Practice",
+    period: "2023",
+    text: "Captain of a doctoral student social practice team at Tsinghua University; the team received a university-level Gold Award.",
+    emphasis: "Gold Award",
   },
 ];
 ---
 
 <div class="work-service-by-cgpt">
-  {entries.map(({ label, text }) => (
-    <p><strong>{label}:</strong>{" "}<OrganizationText text={text} /></p>
-  ))}
+  {entries.map(({ label, period, text, emphasis }) => {
+    const [prefix, suffix = ""] = emphasis ? text.split(emphasis) : [text];
+    return (
+      <p>
+        <strong>{label}{period && ` (${period})`}:</strong>{" "}
+        <OrganizationText text={prefix} />
+        {emphasis && <strong>{emphasis}</strong>}
+        <OrganizationText text={suffix} />
+      </p>
+    );
+  })}
 </div>
 
 <style>
