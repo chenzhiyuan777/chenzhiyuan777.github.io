@@ -768,7 +768,8 @@ const honorRecords: Award[] = [
   },
   {
     titleEn: "National Scholarship (three consecutive years)",
-    titleZh: "国家奖学金（连续三年）",
+    // by cgpt: Keep three scholarship years distinct from the four-year academic ranking.
+    titleZh: "连续三年获得国家奖学金，连续四年成绩排名1/440",
     recipients: "Zhiyuan Chen / 陈志远",
     date: "2016-11, 2017-11, 2018-11",
     awardingOrganization: "Ministry of Education, PRC",
