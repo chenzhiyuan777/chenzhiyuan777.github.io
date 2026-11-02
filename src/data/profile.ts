@@ -410,7 +410,8 @@ export const researchProjects = [
     logo: "/images/xiaomi.png",
   },
   {
-    type: "Patent",
+    // by cgpt: Classify the research project as R&D; its patent remains an outcome.
+    type: "R&D",
     organization: "Xiaomi Robotics",
     title: "Vision-Guided Bin-Picking",
     description:
@@ -785,16 +786,16 @@ const honorRecords: Award[] = [
   },
   {
     titleEn: "Top Ten Charming Students",
-    // by cgpt: Use the author's requested school-level wording in the Chinese honor title.
-    titleZh: "校级‘十大魅力学子’荣誉称号",
+    // by cgpt: State the approved university-wide recipient count without ratio ambiguity.
+    titleZh: "“十大魅力学子”（全校10人）",
     recipients: "Zhiyuan Chen / 陈志远",
     date: "2019-05",
     awardingOrganization: "Wuhan University of Science and Technology",
   },
   {
     titleEn: "Outstanding 3D Association President",
-    // by cgpt: Preserve the author-supplied distinction and its 1/10 context.
-    titleZh: "担任学校3D协会会长，并获评优秀会长(1/10)",
+    // by cgpt: Preserve the role and state the university-wide recipient count.
+    titleZh: "担任学校3D协会会长，并获评优秀会长（全校10人）",
     recipients: "Zhiyuan Chen / 陈志远",
     date: "2017-05",
     awardingOrganization: "Wuhan University of Science and Technology",
