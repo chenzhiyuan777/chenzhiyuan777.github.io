@@ -784,7 +784,7 @@ h3 {
   font-size: 1rem;
 }
 
-.patent-title-zh,
+/* by cgpt: Keep English-only patent date and status metadata muted. */
 .patent-date,
 .patent-status {
   color: var(--muted);

@@ -81,16 +81,21 @@
 - by cgpt：Research and Projects章节放在Competitions之前，顶部导航同步顺序。
 - by cgpt：未公开的Paper显示不可点击的Paper (Not Yet Public)，不链接回主页。
   投稿会议年份与论文年份分开：Finder为2026论文、ICRA 2027在投，沿用AAAI/
-  MobiCom的年份区分；TIM年份及媒体标签均为2024。About Me以作者最新两段文案为准。
+  MobiCom的年份区分；TIM年份及媒体标签均为2024。About Me保留作者指定两段，
+  末尾补充作者确认的审稿服务句。
 - by cgpt：Work Experience的当前职位描述与About Me及Research定位保持一致。
   新增荣誉时复用现有机构logo；已批准的旧荣誉相对顺序按奖项定位维护，
   不以固定行号调整，避免插入新项后误换其他条目。
 - by cgpt：Teaching与Social Practice并入Work Experience的原有时间线，复用小米/
   华为的日期左、单位与角色/内容右布局及手机适配，单位为清华并显示原logo。
-  Reviewer在四项经历后保留为简短行内标签，不另设标题、章节或导航，保留
-  among others。Teaching用作者提供的2022–2024，Social Practice用2023，其他
+  Reviewer作为About Me第二段末尾的最后一句，普通正文仅保留一处，精确使用现在时
+  I serve as a reviewer for ICRA, IEEE TIM, and AEI, among others.，不新增标题/日期。
+  Teaching用作者提供的2022–2024，Social Practice用2023，其他
   日期不编造；实践写Captain身份，不用Led动词，金奖明确属于团队；加粗
   Outstanding Teaching Assistant和Gold Award。
+- by cgpt：专利仅显示英文标题、状态与日期提示；中文标题/译文/原始日期说明
+  完整归档于personalPAGE/midocx/profile/retired-patent-chinese-20261101-by-cgpt/，
+  日后按恢复README局部合并。保留知网与证据匹配实际使用的中文键，不破坏链接。
 
 ## 文件与协作边界
 
