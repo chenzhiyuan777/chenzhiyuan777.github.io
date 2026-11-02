@@ -40,7 +40,8 @@ const socialImage = Astro.site
     <link rel="icon" type="image/png" sizes="32x32" href={`/images/avatar-icon-32.png?v=${avatarByCgpt.iconVersion}`} />
     <link rel="apple-touch-icon" sizes="180x180" href={`/images/avatar-icon-180.png?v=${avatarByCgpt.iconVersion}`} />
     <meta property="og:type" content="profile" />
-    <meta property="og:site_name" content="Zhiyuan" />
+    <!-- by cgpt: Keep the shared site identity consistent with the full homepage title. -->
+    <meta property="og:site_name" content="Zhiyuan Chen" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
