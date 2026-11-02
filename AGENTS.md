@@ -88,6 +88,7 @@
   不以固定行号调整，避免插入新项后误换其他条目。
 - by cgpt：Teaching与Social Practice并入Work Experience的原有时间线，复用小米/
   华为的日期左、单位与角色/内容右布局及手机适配，单位为清华并显示原logo。
+  按开始年份倒序，同年优先职业经历；当前顺序为小米、华为、社会实践、助教。
   Reviewer作为About Me第二段末尾的最后一句，普通正文仅保留一处，精确使用现在时
   I serve as a reviewer for ICRA, IEEE TIM, and AEI, among others.，不新增标题/日期。
   Teaching用作者提供的2022–2024，Social Practice用2023，其他

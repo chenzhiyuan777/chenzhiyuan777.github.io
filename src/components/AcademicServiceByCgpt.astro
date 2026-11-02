@@ -13,7 +13,16 @@ interface ServiceEntry {
   emphasis: string;
 }
 
+// by cgpt: Order academic experiences by their start year, newest first.
 const entries: ServiceEntry[] = [
+  {
+    kind: "social-practice",
+    period: "2023",
+    organization: "Tsinghua University",
+    role: "Social Practice Team Captain",
+    text: "The doctoral student social practice team received a university-level Gold Award.",
+    emphasis: "Gold Award",
+  },
   {
     kind: "teaching",
     period: "2022–2024",
@@ -22,14 +31,6 @@ const entries: ServiceEntry[] = [
     // by cgpt: Specify undergraduate courses directly beneath the formal TA role.
     text: "Undergraduate courses: Calculus and UAV Development; recognized as an Outstanding Teaching Assistant.",
     emphasis: "Outstanding Teaching Assistant",
-  },
-  {
-    kind: "social-practice",
-    period: "2023",
-    organization: "Tsinghua University",
-    role: "Social Practice Team Captain",
-    text: "The doctoral student social practice team received a university-level Gold Award.",
-    emphasis: "Gold Award",
   },
 ];
 ---
