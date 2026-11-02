@@ -722,7 +722,8 @@ const honorRecords: Award[] = [
   },
   {
     titleEn: "Gold Award Graduate Practice Team",
-    titleZh: "清华大学博士生实践金奖支队（BG支队，队长）",
+    // by cgpt: State the captain role and the approved university-wide award count.
+    titleZh: "清华大学博士生实践金奖支队（队长，全校10支）",
     recipients: "BG team / 陈志远（队长）",
     date: "2023-11",
     awardingOrganization: "Tsinghua University",

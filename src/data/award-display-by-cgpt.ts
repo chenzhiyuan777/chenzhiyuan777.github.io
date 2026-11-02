@@ -7,7 +7,8 @@ export type AwardDisplayRecord = Award & {
 };
 
 const recipientOverrides: Record<string, string> = {
-  "清华大学博士生实践金奖支队（BG支队，队长）": "Zhiyuan Chen (team lead), BG team",
+  // by cgpt: Keep the team-lead attribution when the approved Chinese title changes.
+  "清华大学博士生实践金奖支队（队长，全校10支）": "Zhiyuan Chen (team lead), BG team",
 };
 
 const escapeHtml = (text: string) =>
